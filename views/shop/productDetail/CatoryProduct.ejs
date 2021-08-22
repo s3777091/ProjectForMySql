@@ -1,0 +1,54 @@
+<head>
+  <link rel="stylesheet" href="/css/productCart.css">
+  <link rel="stylesheet" href="/css/categories.css">
+
+</head>
+
+<%- include('../sections/menu.ejs') %>
+
+<div>
+    <h2><%= title%></h2>
+  </div>
+
+  <% categories.forEach(function(ca){ %>
+    <a href="/cat/<%= ca.CategorySlug%>">
+<img class="categories_img" src="<%=ca.Image%>">
+    </a>
+<% }); %>
+
+
+<div class="card_body">
+  <% products.forEach(function(pr){ %>
+  <div class="card">
+    <div class="imgBox">
+      <img src="<%= pr.Image %>" alt="" />
+    </div>
+    <div class="details">
+      <div class="textContent">
+        <h4>
+          <%=pr.ProductName.replace(/<\/?[^>]+(>|$)/g,
+          "").trim().substr(0,10)+'...'%>
+        </h4>
+        <div class="price"><%= pr.ProductPrice %>đ</div>
+      </div>
+      <form
+      action="cart/<%= pr.ProductID %>/add"
+      method="post"
+      id="add_product"
+    >
+      <button type="submit">Thêm vào giỏ hàng</button>
+    </form>
+    </div>
+
+
+    <div class="description">
+      <div class="icon"><i class="bx bx-detail nav__icon"></i></div>
+      <div class="contents">
+        <h2>Buy Detail</h2>
+        <p><%= pr.Description %></p>
+      </div>
+    </div>
+  </div>
+  <% }); %>
+</div>
+  

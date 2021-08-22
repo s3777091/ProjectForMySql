@@ -1,0 +1,72 @@
+<%- include('../sections/header.ejs') %>
+
+<%- include('../sections/menu.ejs') %>
+
+<body>
+  <h2><%= title %></h2>
+  <form action="/admin/save_product" method="post" id="add_product">
+    <div class="form-group">
+      <label for="ProductName">Tên sản phẩm:</label>
+      <input type="text" class="form-control" id="ProductName" placeholder="Tên sản phẩm" name="ProductName" required>
+    </div>
+
+    <div class="form-group">
+      <label for="CategoryID">catoryid:</label>
+      <input type="text" class="form-control" id="CategoryID" placeholder="Id category" name="CategoryID" required>
+    </div>
+
+    <div class="form-group">
+      <label for="ProductPrice">Gia san pham:</label>
+      <input type="text" class="form-control" id="ProductPrice" placeholder="Gia san pham" name="ProductPrice" required>
+    </div>
+    <div class="form-group">
+      <label for="UnitsInStock">So luong san pham:</label>
+      <input type="text" class="form-control" id="UnitsInStock" placeholder="So luong san pham" name="UnitsInStock" required>
+    </div>
+
+
+    <div class="form-group">
+      <label for="Description">Thong tin san pham:</label>
+      <input type="text" class="form-control" id="Description" placeholder="Thon tin san pham name" name="Description" required>
+    </div>
+
+    <div class="form-group">
+      <label for="ManufactureYear">Nam san xuat:</label>
+      <input type="text" class="form-control" id="ManufactureYear" placeholder="Nam san xuat" name="ManufactureYear" required>
+    </div>
+
+    <div class="form-group">
+      <label for="Image">Hinh anh san pham:</label>
+      <input type="text" class="form-control" id="Image" placeholder="Hinh anh san pham" name="Image"
+        required>
+    </div>
+
+    <div class="form-group">
+      <label for="ProductSlug">slug san pham:</label>
+      <input type="text" class="form-control" id="ProductSlug" placeholder="slug san pham" name="ProductSlug"
+        required>
+    </div>
+
+    <div class="form-group">
+      <label for="Feature">Feature:</label>
+      <input type="text" class="form-control" id="Feature" placeholder="Feature" name="Feature"
+        required>
+    </div>
+
+    <div class="form-group">
+      <label for="Banner_event">Banner_event:</label>
+      <input type="text" class="form-control" id="Banner_event" placeholder="Banner_event" name="Banner_event"
+        required>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  </div>
+</body>
+
+
+<!-- <form action="/shop_admin/uploadimg" method="POST" encType="multipart/form-data">
+  <h3>Upload Image file</h3>
+  <input type="file" name="sampleFile" accept="image/*" />
+  <input type="submit" class="btn btn-primary" />
+</form> -->

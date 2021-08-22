@@ -1,0 +1,48 @@
+<%- include("../sections/header.ejs") %> 
+
+<%- include('../sections/menu.ejs') %>
+
+<div>
+  <h2>Best seller product</h2>
+</div>
+<div class="card_body">
+  <% categories.forEach(function(ca){ %>
+  <% featProducts.forEach(function(pr){ %>
+    <a href="/cat/<%= pr.CategorySlug%>/<%=pr.ProductSlug %>">
+
+   
+  <div class="card">
+    <div class="imgBox">
+      <img src="<%= pr.Image %>" alt="" />
+    </div>
+    <div class="details">
+      <div class="textContent">
+        <h4>
+          <%=pr.ProductName.replace(/<\/?[^>]+(>|$)/g,
+          "").trim().substr(0,10)+'...'%>
+        </h4>
+        <div class="price"><%= pr.ProductPrice %>đ</div>
+      </div>
+      <form
+      action="cart/<%= pr.ProductID %>/add"
+      method="post"
+      id="add_product"
+    >
+      <button type="submit">Thêm vào giỏ hàng</button>
+    </form>
+    </div>
+
+
+    <div class="description">
+      <div class="icon"><i class="bx bx-detail nav__icon"></i></div>
+      <div class="contents">
+        <h2>Buy Detail</h2>
+        <p><%= pr.Description %></p>
+      </div>
+    </div>
+  </div>
+</a>
+  <% }); %>
+
+  <% }); %>
+</div>

@@ -1,0 +1,62 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title><% title %> </title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="/css/banner.css" />
+</head>
+ 
+<body>
+  <div class="main">
+    <div class="slider">
+      <ul class="slider-parent">
+        <li class="images-list" data-slider="1">
+            <% featProducts.slice(0,1).map(function(bn){ %>
+                <img src="<%=bn.Banner_event %>"/>
+                <% }); %>
+        </li>
+        <li class="images-list" data-slider="2">
+            <% featProducts.slice(1,2).map(function(bn){ %>
+                <img src="<%=bn.Banner_event %>"/>
+                <% }); %>
+        </li>
+
+        <li class="images-list" data-slider="3">
+            <% featProducts.slice(2,3).map(function(bn){ %>
+                <img src="<%=bn.Banner_event %>"/>
+                <% }); %>
+        </li>
+        <li class="images-list" data-slider="4">
+            <% featProducts.slice(3,4).map(function(bn){ %>
+                <img src="<%=bn.Banner_event %>"/>
+                <% }); %>
+        </li>
+        <li class="images-list" data-slider="5">
+            <% featProducts.slice(4,5).map(function(bn){ %>
+                <img src="<%=bn.Banner_event %>"/>
+                <% }); %>
+        </li>
+        <li class="images-list" data-slider="6">
+            <% featProducts.slice(5,6).map(function(bn){ %>
+                <img src="<%=bn.Banner_event %>"/>
+                <% }); %>
+        </li>
+      </ul>
+      <ol class="buttom-circles">
+        <li class="buttom-circles-list slider-active" data-slider="1"><i class="fa fa-circle-thin"></i></li>
+        <li class="buttom-circles-list" data-slider="2"><i class="fa fa-circle-thin"></i></li>
+        <li class="buttom-circles-list" data-slider="3"><i class="fa fa-circle-thin"></i></li>
+        <li class="buttom-circles-list" data-slider="4"><i class="fa fa-circle-thin"></i></li>
+        <li class="buttom-circles-list" data-slider="5"><i class="fa fa-circle-thin"></i></li>
+        <li class="buttom-circles-list" data-slider="6"></li>
+      </ol>
+      <i class="fa fa-chevron-right fa-5x"></i>
+      <i class="fa fa-chevron-left fa-5x"></i>
+    </div>
+  </div>
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script  src="/js/banner.js"></script>
+ 
+</body>
+</html>

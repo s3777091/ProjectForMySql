@@ -1,0 +1,80 @@
+[
+  {
+    "ProductID": 23,
+    "ProductName": "Nước Hoa Nữ Narciso Rodriguez For Her 100ml",
+    "CategoryID": 6,
+    "ProductPrice": 690000,
+    "UnitsInStock": 5932,
+    "Description": "Narciso Rodriguez for Her Eau de Parfum được mở đầu một cách khá nhẹ nhàng và dễ chịu với một thoáng hương đào đầy tươi mát kết hợp với những cánh hoa hồng rực rỡ, sau đó là chút xạ hương nhẹ nhàng hòa quyện vào bên lớp hoa hồng",
+    "ManufactureYear": 2021,
+    "Image": "https://cf.shopee.vn/file/4f2a24101f648b24f40f2f2b6d4020d3",
+    "ProductSlug": "nuoc-hoa-nua-for-her-100ml",
+    "Feature": 1,
+    "Banner_event": ""
+  },
+  {
+    "ProductID": 39,
+    "ProductName": "Áo thun nam tay ngắn unisex cổ tròn",
+    "CategoryID": 3,
+    "ProductPrice": 89000,
+    "UnitsInStock": 3020,
+    "Description": "Nam",
+    "ManufactureYear": 2021,
+    "Image": "https://cf.shopee.vn/file/4a29c51228c557ac401f6a867beae973",
+    "ProductSlug": "ao-thun-nam-tay-ngan-unisex-co-tron",
+    "Feature": 1,
+    "Banner_event": "https://cf.shopee.vn/file/88ea00cf060e51583519f53bc7c94257"
+  },
+  {
+    "ProductID": 40,
+    "ProductName": "Áo ba lỗ nam THE 1992",
+    "CategoryID": 3,
+    "ProductPrice": 39000,
+    "UnitsInStock": 2580,
+    "Description": "Nam",
+    "ManufactureYear": 2021,
+    "Image": "https://cf.shopee.vn/file/d2abed611d855f5f27ab2577b89e4cc6",
+    "ProductSlug": "ao-ba-lo-nam-the-1992",
+    "Feature": 1,
+    "Banner_event": "https://cf.shopee.vn/file/88ea00cf060e51583519f53bc7c94257"
+  },
+  {
+    "ProductID": 42,
+    "ProductName": "Vớ nam 10 đôi kiểu cổ ngắn",
+    "CategoryID": 3,
+    "ProductPrice": 59000,
+    "UnitsInStock": 2320,
+    "Description": "Nam",
+    "ManufactureYear": 2021,
+    "Image": "https://cf.shopee.vn/file/30fb1b40eb7409afa776cc42f44e0415",
+    "ProductSlug": "vo-nam-10-doi-co-ngan",
+    "Feature": 1,
+    "Banner_event": "https://cf.shopee.vn/file/88ea00cf060e51583519f53bc7c94257"
+  },
+  {
+    "ProductID": 53,
+    "ProductName": "Gel rửa tay khô sạch siêu nhanh Lifebuoy",
+    "CategoryID": 5,
+    "ProductPrice": 73000,
+    "UnitsInStock": 2425,
+    "Description": "Ve sinh",
+    "ManufactureYear": 2021,
+    "Image": "https://cf.shopee.vn/file/31a04f6a35d4450656306a32bb57c5a0",
+    "ProductSlug": "gel-rau-tay-kho-sach-sieu-nhanh-lifebuoy",
+    "Feature": 1,
+    "Banner_event": "https://cf.shopee.vn/file/88ea00cf060e51583519f53bc7c94257"
+  },
+  {
+    "ProductID": 54,
+    "ProductName": "Khăn Giấy Lụa Bless You 2 Lớp 250 Tờ",
+    "CategoryID": 5,
+    "ProductPrice": 23000,
+    "UnitsInStock": 5347,
+    "Description": "Ve sinh",
+    "ManufactureYear": 2021,
+    "Image": "https://cf.shopee.vn/file/dc3a9f1e0fbbc8b6cc8dc70216db18f5",
+    "ProductSlug": "khan-giay-lua-bless-you-2-lop-250-to",
+    "Feature": 1,
+    "Banner_event": "https://cf.shopee.vn/file/88ea00cf060e51583519f53bc7c94257"
+  }
+]

@@ -1,0 +1,29 @@
+<%- include('../sections/menu.ejs') %>
+
+<body>
+    <a href="/admin/add_product">Add More Product</a>
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th>Ảnh sản phẩm</th>
+                <th>Tên sản phẩm</th>
+                <th>Giá sản phẩm</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% product.forEach(function(pr){ %>
+            <tr>
+                <td>
+                    <img src="<%= pr.Image %> " class="img_display" alt="" />
+                </td>
+                <td><%= pr.ProductName %></td>
+                <td><%= pr.ProductPrice %></td>
+                <td>
+                    <a href="admin/edit/<%= pr.ProductSlug %>" class="btn btn-sm btn-primary">Edit</a>
+                    <a href="admin/delete/<%= pr.ProductSlug %>" class="btn btn-danger">delete</a>
+                </td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>

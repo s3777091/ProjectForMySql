@@ -1,0 +1,9 @@
+.categories_img{
+    width: 120px;
+    height: 120px;
+    border-radius: 15px;
+}
+.categories_img_display{
+    margin-top: 10px;
+    padding-left: 5px;
+}

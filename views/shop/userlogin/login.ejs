@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/login.css">
+    <title>Sign in & Sign up Form</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="forms-container">
+            <div class="signin-signup">
+                <form action="/sign-in" method="POST" id="sign-in" class="sign-in-form">
+                    <h2 class="title">Sign in</h2>
+                    <div class="input-field">
+                        <i for="username" class="fas fa-user"></i>
+                        <input type="text" placeholder="Enter your Username" name="username" />
+                    </div>
+                    <div class="input-field">
+                        <i for="password" class="fas fa-lock"></i>
+                        <input type="Password" placeholder="Enter your password" name="password" />
+                    </div>
+                    <input type="submit" value="Login" class="btn solid" />
+                    <div class="new_account_check">
+                        If you haven't had an account. <a href="/sign-up">Create a new account</a>.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/authentication.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+<%- include("../sections/header.ejs") %>
+<div class="categories_img_display">
+
+    <h2>
+        Danh Mục
+    </h2>
+    <% categories.forEach(function(ca){ %>
+        <a href="/cat/<%= ca.CategorySlug%>">
+    <img class="categories_img" src="<%=ca.Image%>">
+        </a>
+    <% }); %>
+
+</div>
