@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal" created-in="PY-212.4746.96">
-    <data-source name="astore@localhost" uuid="5fdb95be-f86b-4590-b025-9787e3bd5029">
-      <database-info product="MySQL" version="8.0.26" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.25 (Revision: 08be9e9b4cba6aa115f9b27b215887af40b159e0)" dbms="MYSQL" exact-version="8.0.26" exact-driver-version="8.0">
+    <data-source name="shop_sever@shop-do-user-9342162-0.b.db.ondigitalocean.com" uuid="8ae7a845-35bb-40b7-9ab8-9d5513f82d6d">
+      <database-info product="MySQL" version="8.0.25" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.25 (Revision: 08be9e9b4cba6aa115f9b27b215887af40b159e0)" dbms="MYSQL" exact-version="8.0.25" exact-driver-version="8.0">
         <extra-name-characters>#@</extra-name-characters>
-        <identifier-quote-string>`</identifier-quote-string>
+        <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
-      <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
-      <secret-storage>session</secret-storage>
-      <user-name>doadmin</user-name>
+      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>dathuynh</user-name>
       <schema-mapping>
         <introspection-scope>
-          <node kind="schema" qname="astore" />
+          <node kind="schema" qname="@" />
         </introspection-scope>
       </schema-mapping>
     </data-source>

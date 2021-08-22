@@ -121,6 +121,8 @@ module.exports = function (passport) {
                   var PostCode = "4541";
                   var City = "Da nang";
                   var Country = "Viet Nam";
+                  var Avatar =
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI3vvVZ-pOGsyhaNEm9s-tm96lh7OGxJrpPQ&usqp=CAU";
                   var passwordHash = bcrypt.hashSync(Password, null, null);
                   var insertQuery =
                     "INSERT INTO Users\
@@ -139,6 +141,9 @@ module.exports = function (passport) {
                     "', \
                                     '" +
                     Country +
+                    "', \
+                                    '" +
+                    Avatar +
                     "', \
                                     '" +
                     Phone +
@@ -172,6 +177,8 @@ module.exports = function (passport) {
                       City +
                       "', '" +
                       Country +
+                      "', '" +
+                      Avatar +
                       "', '" +
                       Phone +
                       "')";
