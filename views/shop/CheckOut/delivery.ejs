@@ -1,1 +1,75 @@
-<h1>Delivery</h1>
+<%- include('../sections/menu.ejs') %>
+<head>
+  <link rel="stylesheet" href="/css/delivery.css" />
+</head>
+<div class="container">
+  <h1>Delivery address</h1>
+  <% addresses.slice(0,1).map(function(ad){ %>
+  <form action="/checkout/delivery/<%=ad.AddressID%>" method="post">
+    <div class="form">
+      <h2>
+        Here is your shipping detail: <%= ad.StreetAddress %>, <%= ad.City %> In
+        <%= ad.Country %>, And Phone number <%= ad.Phone %>
+      </h2>
+      <button class="button" type="submit">
+        If this address is your press here
+      </button>
+    </div>
+  </form>
+
+  <% }); %>
+
+  <br />
+
+  <form action="/checkout/delivery/new" method="post">
+    <div class="form">
+      <h3>Form for new address shipping</h3>
+      <div class="fields fields--2">
+        <label for="fullName" class="field">
+          <span class="field__label" for="fullName">FullName</span>
+          <input
+            class="field__input"
+            type="text"
+            id="fullName"
+            name="fullName"
+          />
+        </label>
+
+        <label for="phone" class="field">
+          <span class="field__label" for="phone">Phone</span>
+          <input class="field__input" type="text" id="phone" name="phone" />
+        </label>
+      </div>
+      <label for="streetAddress" class="field">
+        <span class="field__label" for="streetAddress">Address</span>
+        <input
+          class="field__input"
+          type="text"
+          id="streetAddress"
+          name="streetAddress"
+        />
+      </label>
+      <label for="postcode" class="field">
+        <span class="field__label" for="postcode">Zip code</span>
+        <input class="field__input" type="text" id="postcode" name="postcode" />
+      </label>
+
+      <label for="city" class="field">
+        <span class="field__label" for="city">City</span>
+        <input class="field__input" type="text" id="city" name="city" />
+      </label>
+
+      <label for="country" class="field">
+        <span class="field__label" for="country">Country</span>
+        <input class="field__input" type="text" id="country" name="country" />
+      </label>
+    </div>
+    <br />
+    <button class="button" type="submit">Continue</button>
+    <br />
+  </form>
+  <a href="/cart">
+    <button class="button">Go back to Cart</button>
+  </a>
+  <hr />
+</div>

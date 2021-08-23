@@ -1,0 +1,67 @@
+<head>
+    <link rel="stylesheet" href="/css/review.css">
+</head>
+<body>
+<div class='subject'>DailyUI #002 </br><strong>Credit Card Checkout</strong></div>
+
+  
+<% if (summary != null) { %>
+<div class='checkout'>
+  <div class='order'>
+    <h2>Review</h2>
+    <h5><%= title %></h5>
+    
+    <ul class='order-list'>
+
+      <% cart.forEach(function(ca){ %>
+        <% var productLink =  '/cat/' + ca.CategorySlug + '/' + ca.ProductSlug %>
+    <a style="color: #ffffff; text-decoration: none;" href="/cat/<%= ca.CategorySlug %>/<%= ca.ProductSlug %>">
+      <li><img src='<%= ca.Image%>'>
+        <h4> <%=ca.ProductName.replace(/<\/?[^>]+(>|$)/g,
+        "").trim().substr(0,25)+'...'%></h4>
+        <h5><%= ca.ProductPrice%> đ với <%= ca.quantity %> sản phẩm</h5></li>
+    </a>
+    <% }); %>
+  </ul>
+
+    <% if (address != null) { %>
+    <h5>Shipping detail: </h5>
+    <p><%= address.StreetAddress %>, <%= address.City %> <%= address.Country%> </p>
+     <p> sđt: <%= address.Phone %></p>
+    <% } %> 
+
+    <h5 class='total'>Total</h5><h1>Đ <%= summary.subTotal%></h1>
+  </div>
+
+
+  <h2>Sumary</h2>
+  <div id='payment' class='payment'>
+<div class="payment_method">
+  <h2>
+    Tóm tắt đơn hàng:
+  </h2>
+  <h3>
+    Tổng tiền các hàng hóa: <%= summary.subTotal%> đồng
+  </h3>
+
+  <h3>
+    Giảm giá: <%= summary.discount %>
+  </h3>
+
+  <h3>
+    Phí vận chuyển: <%= summary.shipCost %>
+  </h3>
+
+  <h3>
+    Tổng tiền tính thêm các phí: <%= summary.total %> đồng
+  </h3>
+</div>
+    <a href="/checkout/order">
+      <button class='button-cta' title='Confirm your purchase'><span>Confirm</span></button>
+    </a>
+  <% } %> 
+  </div>
+</div>
+
+<script src="/js/review.js"></script>
+</body>

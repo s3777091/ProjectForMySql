@@ -10,7 +10,7 @@ router.route("/").get(function (req, res, next) {
   if (req.isAuthenticated()) {
     if (req.session.cart) {
       if (req.session.summary.totalQuantity > 0) {
-        res.redirect("checkout/delivery/");
+        res.redirect("/checkout/delivery");
       }
     }
     res.redirect("/cart");
@@ -41,7 +41,7 @@ router.route("/delivery").get(function (req, res, next) {
       addresses: rows,
       customer: req.user,
     };
-    res.render("checkout/delivery", contextDict);
+    res.render("shop/CheckOut/delivery", contextDict);
   });
   // if choose from exist address => redirect
   // if create new add
@@ -122,7 +122,7 @@ router.route("/review").get(function (req, res, next) {
     address: req.session.address,
     customer: req.user,
   };
-  res.render("checkout/review", contextDict);
+  res.render("shop/CheckOut/review", contextDict);
 });
 
 router.route("/order").get(function (req, res, next) {
@@ -232,7 +232,7 @@ router.route("/order").get(function (req, res, next) {
             products: products,
           };
 
-          res.render("checkout/confirm", contextDict);
+          res.render("shop/CheckOut/comfirm", contextDict);
         });
       });
     });

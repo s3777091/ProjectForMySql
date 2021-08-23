@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dfb19823-2ebf-4ce8-8a82-50b6c79f5ba5" name="Default" comment="complete: optimizing&#10;next step: deploy">
-      <change afterPath="$PROJECT_DIR$/ShopSever.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5fdb95be-f86b-4590-b025-9787e3bd5029/entities/entities.dat" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/5fdb95be-f86b-4590-b025-9787e3bd5029/entities/entities.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5fdb95be-f86b-4590-b025-9787e3bd5029/entities/entities.dat.values" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/5fdb95be-f86b-4590-b025-9787e3bd5029/entities/entities.dat.values" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5fdb95be-f86b-4590-b025-9787e3bd5029/entities/entities.dat.values.s" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/5fdb95be-f86b-4590-b025-9787e3bd5029/entities/entities.dat.values.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5fdb95be-f86b-4590-b025-9787e3bd5029/entities/entities.dat_i" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/5fdb95be-f86b-4590-b025-9787e3bd5029/entities/entities.dat_i" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aStore.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/passport.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/passport.js" afterDir="false" />
+    <list default="true" id="dfb19823-2ebf-4ce8-8a82-50b6c79f5ba5" name="Default" comment="Fix bug from signup">
       <change beforePath="$PROJECT_DIR$/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/shop/userlogin/login.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/shop/userlogin/login.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/shop/userlogin/register.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/shop/userlogin/register.ejs" afterDir="false" />
@@ -907,7 +896,7 @@
       <workItem from="1629602733122" duration="755000" />
       <workItem from="1629605378831" duration="18000" />
       <workItem from="1629605464825" duration="54000" />
-      <workItem from="1629605953208" duration="1170000" />
+      <workItem from="1629605953208" duration="1186000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1449407463649</created>
@@ -993,7 +982,14 @@
       <option name="project" value="LOCAL" />
       <updated>1452632426114</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Fix bug from signup">
+      <created>1629607143412</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1629607143412</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1083,7 +1079,8 @@
     <MESSAGE value="complete: updated templates suit with css&#10;next step: css stuff" />
     <MESSAGE value="complete: css stuff&#10;next step: deploy" />
     <MESSAGE value="complete: optimizing&#10;next step: deploy" />
-    <option name="LAST_COMMIT_MESSAGE" value="complete: optimizing&#10;next step: deploy" />
+    <MESSAGE value="Fix bug from signup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix bug from signup" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
