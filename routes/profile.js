@@ -34,52 +34,49 @@ router.route("/:username").get(isLoggedIn, function (req, res) {
   });
 });
 
-router
-  .route("/:username/edit")
-  .get(isLoggedIn, function (req, res) {
-    res.render("shop/UserProfile/UserProfile", {
-      title: req.user.FullName,
-      customer: req.user,
-    });
-  })
-
-  .post(isLoggedIn, function (req, res) {
-    var form = req.body;
-    if (bcrypt.compareSync(form.password, req.user.Password)) {
-      var updateQuery =
-        "\
-                UPDATE Users\
-                SET Fullname = '" +
-        form.fullName +
-        "', \
-                    Email = '" +
-        form.email +
-        "', \
-                    StreetAddress = '" +
-        form.streetAddress +
-        "', \
-                    PostCode = '" +
-        form.postcode +
-        "', \
-                    City = '" +
-        form.city +
-        "', \
-                    Country = '" +
-        form.country +
-        "', \
-                    Phone = '" +
-        form.phone +
-        "' \
-                WHERE UserID = " +
-        req.user.UserID;
-
-      RunQuery(updateQuery, function (result) {
-        res.redirect("/usr/" + req.user.Username);
-      });
-    } else {
-      //password wrong
-    }
+router.route("/:username/edit").get(isLoggedIn, function (req, res) {
+  res.render("shop/UserProfile/editProfile", {
+    title: req.user.FullName,
+    customer: req.user,
   });
+});
+
+router.post("/:username/edit/post", isLoggedIn, function (req, res) {
+  var form = req.body;
+  var updateQuery =
+    "\
+              UPDATE Users\
+              SET Fullname = '" +
+    form.fullName +
+    "', \
+                  Email = '" +
+    form.email +
+    "', \
+                  StreetAddress = '" +
+    form.streetAddress +
+    "', \
+                  PostCode = '" +
+    form.postcode +
+    "', \
+                  City = '" +
+    form.city +
+    "', \
+                  Country = '" +
+    form.country +
+    "', \
+    Avatar = '" +
+    form.Avatar +
+    "', \
+                  Phone = '" +
+    form.phone +
+    "' \
+              WHERE UserID = " +
+    req.user.UserID;
+
+  RunQuery(updateQuery, function (result) {
+    res.redirect("/usr/" + req.user.Username);
+  });
+});
 
 router
   .route("/:username/change-password")

@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dfb19823-2ebf-4ce8-8a82-50b6c79f5ba5" name="Default" comment="Fix bug from signup">
-      <change beforePath="$PROJECT_DIR$/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/shop/userlogin/login.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/shop/userlogin/login.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/shop/userlogin/register.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/shop/userlogin/register.ejs" afterDir="false" />
+    <list default="true" id="dfb19823-2ebf-4ce8-8a82-50b6c79f5ba5" name="Default" comment="Need to change">
+      <change afterPath="$PROJECT_DIR$/views/shop/UserProfile/changepassword.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/shop/UserProfile/editProfile.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/shop/UserProfile/UserProfile.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/shop/UserProfile/UserProfile.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/shop/UserProfile/editProfle.ejs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,7 +251,7 @@
     <property name="javascript.nodejs.core.library.configured.version" value="14.17.4" />
     <property name="javascript.nodejs.core.library.typings.version" value="14.17.4" />
     <property name="js-jscs-nodeInterpreter" value="E:\nodejs\node.exe" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Mysql_shop" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Kismovies" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
@@ -897,6 +900,8 @@
       <workItem from="1629605378831" duration="18000" />
       <workItem from="1629605464825" duration="54000" />
       <workItem from="1629605953208" duration="1186000" />
+      <workItem from="1629708833213" duration="317000" />
+      <workItem from="1629714731206" duration="28000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1449407463649</created>
@@ -989,7 +994,21 @@
       <option name="project" value="LOCAL" />
       <updated>1629607143412</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Need to change">
+      <created>1629708855955</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1629708855955</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Need to change">
+      <created>1629708889845</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1629708889845</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1080,7 +1099,8 @@
     <MESSAGE value="complete: css stuff&#10;next step: deploy" />
     <MESSAGE value="complete: optimizing&#10;next step: deploy" />
     <MESSAGE value="Fix bug from signup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix bug from signup" />
+    <MESSAGE value="Need to change" />
+    <option name="LAST_COMMIT_MESSAGE" value="Need to change" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
