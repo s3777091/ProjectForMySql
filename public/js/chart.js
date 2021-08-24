@@ -41,7 +41,7 @@ async function getData() {
   // tạo biến private
   // mở crt + F11 mở cửa sổ console sẽ thấy
   // gọi giá trị stock là cái nhập vào đẻ filter nhưng ko hiểu sao ko vào
-  const response = await fetch('http://127.0.0.1:5500/UnitStock.json');
+  const response = await fetch('http://127.0.0.1:5500/data/UnitStock.json');
 
   // sử dụng api từ web
   const data = await response.json();

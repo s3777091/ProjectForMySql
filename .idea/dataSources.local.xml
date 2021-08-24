@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal" created-in="PY-212.4746.96">
-    <data-source name="shop_sever@shop-do-user-9342162-0.b.db.ondigitalocean.com" uuid="8ae7a845-35bb-40b7-9ab8-9d5513f82d6d">
+    <data-source name="shop_sever@shop-do-user-9342162-0.b.db.ondigitalocean.com [2]" uuid="99443212-b5dc-4e99-8c56-48f0b687bd77">
       <database-info product="MySQL" version="8.0.25" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.25 (Revision: 08be9e9b4cba6aa115f9b27b215887af40b159e0)" dbms="MYSQL" exact-version="8.0.25" exact-driver-version="8.0">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>&quot;</identifier-quote-string>

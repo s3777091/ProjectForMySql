@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="shop_sever@shop-do-user-9342162-0.b.db.ondigitalocean.com" uuid="8ae7a845-35bb-40b7-9ab8-9d5513f82d6d">
+    <data-source source="LOCAL" name="shop_sever@shop-do-user-9342162-0.b.db.ondigitalocean.com [2]" uuid="99443212-b5dc-4e99-8c56-48f0b687bd77">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>

@@ -115,7 +115,7 @@ router.post("/api/product/post", (req, res) => {
   let sqlStr = `SELECT * FROM Products WHERE UnitsInStock > ${UnitsInStock}`;
   RunQuery(sqlStr, function (product) {
     var data = JSON.stringify(product, null, 2);
-    fs.writeFile("UnitStock.json", data, finished);
+    fs.writeFile("data/UnitStock.json", data, finished);
     function finished(err) {
       console.log("all set");
     }
