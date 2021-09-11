@@ -1,0 +1,27 @@
+<%- include('../sections/header.ejs') %>
+<%- include('../sections/menu.ejs') %>
+
+<body>
+<table className="table table-dark table-striped">
+    <thead>
+    <tr>
+        <th>Ảnh Nguoi dung</th>
+        <th>Tên Nguoi dung</th>
+        <th>Email nguoi dung</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% user.forEach(function(ur){%>
+        <tr>
+        <td>
+        <img src="<%= ur.Avatar %> " class="img_display" alt="" />
+        </td>
+        <td><%= ur.FullName %></td>
+        <td><%= ur.Email %></td>
+        </tr>
+        <%});%>
+    </tbody>
+</table>
+</body>
+
+

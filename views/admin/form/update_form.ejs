@@ -1,0 +1,54 @@
+<%- include('../sections/header.ejs') %>
+
+<%- include('../sections/menu.ejs') %>
+
+<body>
+
+
+    <h2><%= title %></h2>
+    <form action="/admin/update" method="post">
+        <h3>chỉnh sửa thông tin sản phẩm <%= product.ProductName %></h3>
+        <input type="hidden" value="<%= product.ProductSlug %>" name="ProductSlug">
+
+
+        <div class="form-group">
+            <label for="ProductName">Ten san pham:</label>
+            <input type="text" class="form-control" id="ProductName" placeholder="Enter gia san pham" value="<%= product.ProductName %>"
+                name="ProductName" required>
+        </div>
+
+
+        <div class="form-group">
+            <label for="ProductPrice">giá sản phẩm:</label>
+            <input type="cost" class="form-control" id="ProductPrice" placeholder="Enter gia san pham" value="<%= product.ProductPrice %>"
+                name="ProductPrice" required>
+        </div>
+        <div class="form-group">
+            <label for="Description">decription:</label>
+            <input type="text" class="form-control" id="Description" placeholder="Thông tin sản phẩm"
+                value="<%= product.Description %>" name="Description" required>
+        </div>
+
+        <div class="form-group">
+            <label for="ManufactureYear">ManufactureYear:</label>
+            <input type="text" class="form-control" id="ManufactureYear" placeholder="Nam san xuat"
+                value="<%= product.ManufactureYear %>" name="ManufactureYear" required>
+        </div>
+
+        <div class="form-group">
+            <label for="UnitsInStock">So luong san pham:</label>
+            <input type="text" class="form-control" id="UnitsInStock" placeholder="<%= product.UnitsInStock %>"
+                value="<%= product.UnitsInStock %>" name="UnitsInStock" required>
+        </div>
+
+        <div class="form-group">
+            <label for="Image">Img:</label>
+            <input type="text" class="form-control" id="Image" placeholder="ảnh sản phẩm" value="<%= product.Image %>"
+                name="Image" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</body>
+
+</html>

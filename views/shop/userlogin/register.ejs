@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/login.css">
+    <title>Sign in & Sign up Form</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="forms-container">
+            <div class="signin-signup">
+                                
+                <form action="/sign-up" method="POST" id="sign-up" class="sign-in-form">
+                    <h2 class="title">Sign Up new User</h2>
+
+                    <div class="input-field">
+                        <i for="FullName" class="fas fa-user"></i>
+                        <input type="text" placeholder="Enter your FullName" name="FullName" id="FullName" required=true/>
+                    </div>
+
+                    <div class="input-field">
+                        <i for="Email" class="fas fa-user"></i>
+                        <input type="email" placeholder="Enter your Email Address" name="Email" id="Email" required=true/>
+                    </div>
+
+                    <div class="input-field">
+                        <i for="Username" class="fas fa-user"></i>
+                        <input type="text" placeholder="Enter your Username" name="Username" id="Username" required=true/>
+                    </div>                
+
+                    <div class="input-field">
+                        <i for="Password" class="fas fa-lock"></i>
+                        <input type="Password" placeholder="Password" name="Password" required=true/>
+                    </div>
+                    <div class="input-field">
+                        <i for="rePassword" class="fas fa-lock"></i>
+                        <input type="Password" placeholder="rePassword" name="rePassword" required=true/>
+                    </div>
+                    <input type="submit" value="Hock it" class="btn solid" />
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+
+<script src="/js/authentication.js"></script>
+
+
+</html>
