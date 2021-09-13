@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+
 const connection = require("../config/database");
 var RunQuery = connection.RunQuery;
 
@@ -153,6 +154,18 @@ router.get("/report/users", isAdmin, function (req, res, next) {
   });
 });
 ///////////////////////////////////////////////////////
+
+router.get("/report/userinfor", (req, res) => {
+  var mysql = "SELECT * FROM Users";
+    RunQuery(mysql, function(UserInfor) {
+        var content = {
+          title: "user",
+          usr: UserInfor,
+          customer: req.user
+        };
+        res.render("admin/Report/userinfor", content);
+    });
+});
 
 // router.get("/chart", (req, res) => {
 //   res.render("admin/chart/lineChart", {
