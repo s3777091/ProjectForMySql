@@ -1,0 +1,32 @@
+<%- include('../sections/header.ejs') %>
+<%- include('../sections/menu.ejs') %>
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>Avatar</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Postcode</th>
+            <th>City</th>
+            <th>Country</th>
+            <th>Phone</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% usr.forEach(function(ur){ %>
+        <tr class="active-row">
+            <td>
+                <img src="<%= ur.Avatar %> " class="img_display" alt="" />
+            </td>
+            <td><%= ur.FullName %></td>
+            <td><%= ur.StreetAddress %></td>
+            <td><%= ur.PostCode %></td>
+            <td><%= ur.City %></td>
+            <td><%= ur.Country %></td>
+            <td><%= ur.Phone %></td>
+            <td><%= ur.Email %></td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>

@@ -80,7 +80,7 @@ CREATE TABLE `Users` (
   `PostCode`      VARCHAR(5)   NOT NULL,
   `City`          VARCHAR(28)  NOT NULL,
   `Country`       VARCHAR(28)  NOT NULL,
-    `Avatar` VARCHAR(255) NOT NULL,
+  `Avatar` VARCHAR(255) NOT NULL,
   `Phone`         VARCHAR(12)  NOT NULL,
   `Email`         VARCHAR(50)  NOT NULL,
   `Username`      VARCHAR(28),

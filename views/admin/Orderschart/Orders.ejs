@@ -1,0 +1,33 @@
+<%- include('../sections/menu.ejs') %>
+
+<header>
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  />
+</header>
+<body>
+  <h1>My Chart</h1>
+
+  <div class="container">
+    <canvas id="ChartOrders" width="400" height="100"></canvas>
+
+    <form action="/admin/api/product/post" method="post">
+      <div class="form-group">
+        <label for="UnitsInStock">Số lượng sản phẩm:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="UnitsInStock"
+          placeholder="Số lương sản phẩm"
+          name="UnitsInStock"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script src="/js/Orderschart.js"></script>
+</body>

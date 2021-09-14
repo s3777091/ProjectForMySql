@@ -1,0 +1,24 @@
+<%- include('../sections/header.ejs') %>
+<%- include('../sections/menu.ejs') %>
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>ID</th>
+            <th>Product Name</th>
+            <th>Units in stock</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% usr.forEach(function(ur){ %>
+        <tr class="active-row">
+            <td>
+                <img src="<%= ur.Image %> " class="img_display" alt="" />
+            </td>
+            <td><%= ur.ProductID %></td>
+            <td><%= ur.ProductName %></td>
+            <td><%= ur.UnitsInStock %></td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>

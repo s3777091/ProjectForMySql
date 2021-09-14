@@ -198,14 +198,14 @@ router.route("/order").get(function (req, res, next) {
         selectQuery =
           "\
                     SELECT *\
-                    FROM `Order Details`\
+                    FROM `Order Details` O\
                     INNER JOIN (\
-                        SELECT Products.*, Categories.CategorySlug\
-                        FROM Products\
-                        INNER JOIN Categories\
-                        ON Products.CategoryID = Categories.CategoryID\
-                    ) `Table`\
-                    ON `Order Details`.ProductID = `Table`.ProductID\
+                        SELECT P.*, C.CategorySlug\
+                        FROM Products P\
+                        INNER JOIN Categories C\
+                        ON P.CategoryID = C.CategoryID\
+                    ) T\
+                    ON O.ProductID = T.ProductID\
                     WHERE OrderID = " +
           order[0].OrderID;
 

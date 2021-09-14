@@ -1,6 +1,5 @@
 var express = require("express");
 var router = express.Router();
-
 const connection = require("../config/database");
 var RunQuery = connection.RunQuery;
 
@@ -79,7 +78,7 @@ router.post("/update", isAdmin, (req, res) => {
     "', ManufactureYear='" +
     req.body.ManufactureYear +
     "' WHERE ProductSlug =" +
-    `'${ProductSlug}'`;
+    '${ProductSlug}';
   RunQuery(sql, function () {
     if (err) throw err;
     res.redirect("/");
@@ -95,28 +94,30 @@ router.get("/delete/:ProductSlug", isAdmin, (req, res) => {
   });
 });
 
+
+// Unit in stock-------------------------------------
 // api router
-router.get("/api/product", isAdmin, (req, res) => {
-  let sqlStr = `SELECT * FROM Products`;
+router.get("/api/product", (req, res) => {
+  let sqlStr = "SELECT * FROM Products";
   RunQuery(sqlStr, function (product) {
     res.json(product);
   });
 });
 // router.get("/api/product/:UnitsInStock", (req, res) => {
 //   let UnitsInStock = req.params.UnitsInStock;
-//   let sqlStr = `SELECT * FROM Products WHERE UnitsInStock > ${UnitsInStock}`;
+//   let sqlStr = SELECT * FROM Products WHERE UnitsInStock > ${UnitsInStock};
 //   RunQuery(sqlStr, function (product) {
 //     res.json(product);
 //   });
 // });
 
 var fs = require("fs");
-router.post("/api/product/post", isAdmin, (req, res) => {
+router.post("/api/product/post", (req, res) => {
   let UnitsInStock = req.body.UnitsInStock;
   let sqlStr = `SELECT * FROM Products WHERE UnitsInStock > ${UnitsInStock}`;
   RunQuery(sqlStr, function (product) {
     var data = JSON.stringify(product, null, 2);
-    fs.writeFile("data/UnitStock.json", data, finished);
+    fs.writeFile("UnitStock.json", data, finished);
     function finished(err) {
       console.log("all set");
     }
@@ -130,72 +131,156 @@ router.get("/chart", (req, res) => {
     title: "Shopee 2.0",
   });
 });
+// -----------------------------------------------------
 
-//REPORT GET ALL USER
-// /report/users duong dan
-router.get("/report/users", isAdmin, function (req, res, next) {
-  //in here we have 3 variable req,res is need next not need or need
-  //req mean request, res mean resquest or can say input or ouput from user
-  var sqlStr = "SELECT * FROM Users";
-  //sql query
-  RunQuery(sqlStr, function (UserReport) {
-    //function run that sql query and put it in Variable UserReport
-      var contextDict = {
-        //contextDict is variable recivese all element
-        title: "User Report",
-        //title
-        user: UserReport,
-        // call new public variable to then render it in file UserReport.ejs
-        customer: req.user,
-        //this one define becasue it need login user above i user IsAdmin that is function to identify the admin
-      };
-      res.render("admin/Report/UserReport", contextDict);
-      //res.render is where is use the file, call back contextDict.
+
+// Orders chart-----------------------------------------
+// Orders JSon
+var fs = require("fs");
+router.post("/api/product/post", (req, res) => {
+  let Ordersdata = req.body.Ordersdata;
+  let sqlStr = `SELECT * FROM Products WHERE Orders > ${Orders}`;
+  RunQuery(sqlStr, function (product) {
+    var data = JSON.stringify(product, null, 2);
+    fs.writeFile("Orders.json", data, finished);
+    function finished(err) {
+      console.log("all set");
+    }
+    res.redirect("/admin/Orderschart");
   });
 });
-///////////////////////////////////////////////////////
 
-router.get("/report/userinfor", (req, res) => {
+// Orders chart Page
+router.get("/Orderschart", (req, res) => {
+   res.render("admin/Orderschart/Orders", {
+     title: "Shopee 2.0",
+   });
+ });
+// ------------------------------------------------------
+
+// Total users report //////////////////////////////////
+router.get("/report/Userinfo", (req, res) => {
   var mysql = "SELECT * FROM Users";
+  RunQuery(mysql, function(UserInfor) {
+  var content = {
+  title: "user",
+  usr: UserInfor,
+  customer: req.user
+  };
+  res.render("admin/Report/Userinfo", content);
+  });
+  });
+
+
+// Total products report //////////////////////////////////
+router.get("/report/Productinfo", (req, res) => {
+  var mysql = "SELECT * FROM Products";
     RunQuery(mysql, function(UserInfor) {
         var content = {
           title: "user",
           usr: UserInfor,
           customer: req.user
         };
-        res.render("admin/Report/userinfor", content);
+        res.render("admin/Report/Productinfo", content);
     });
 });
+//////////////////////////////////////////////////////
 
-// router.get("/chart", (req, res) => {
-//   res.render("admin/chart/lineChart", {
-//     title: "Shopee 2.0",
-//   });
-// });
+// >= 1000 units products report //////////////////////////////////
+router.get("/report/Product1000", (req, res) => {
+  var mysql = "SELECT P.Image,P.ProductID, P.ProductName, P.UnitsInStock\
+                FROM Products P\
+                WHERE P.UnitsInStock >= 1000";
+    RunQuery(mysql, function(UserInfor) {
+        var content = {
+          title: "user",
+          usr: UserInfor,
+          customer: req.user
+        };
+        res.render("admin/Report/Product1000", content);
+    });
+});
+//////////////////////////////////////////////////////
 
-// router.post('/uploadimg', (req, res) => {
-//     let sampleFile;
-//     let uploadPath;
+// City and Number of Users in  //////////////////////////////////
+router.get("/report/UsersFromCity", (req, res) => {
+  var mysql = "SELECT U.City, COUNT(*) AS Number_Cus\
+                FROM Users U\
+                GROUP BY U.City";
+    RunQuery(mysql, function(UserInfor) {
+        var content = {
+          title: "user",
+          usr: UserInfor,
+          customer: req.user
+        };
+        res.render("admin/Report/UsersFromCity", content);
+    });
+});
+//////////////////////////////////////////////////////
 
-//     if (!req.files)
-//     return res.status(400).send('No files were uploaded.');
+// Revenue by Products  //////////////////////////////////
+router.get("/report/RevenueByProducts", (req, res) => {
+  var mysql = "SELECT P.Image, P.ProductName, P.ProductID, P.ProductPrice, SUM(O.Total) AS Total_revenue FROM Products P, `Order Details` O WHERE P.ProductID = O.ProductID GROUP BY P.ProductName, P.ProductID, P.ProductPrice, P.Image";
+    RunQuery(mysql, function(UserInfor) {
+        var content = {
+          title: "user",
+          usr: UserInfor,
+          customer: req.user
+        };
+        res.render("admin/Report/RevenueByProducts", content);
+    });
+});
+//////////////////////////////////////////////////////
 
-//     sampleFile = req.files.sampleFile;
-//     uploadPath = __dirname + '/upload/' + sampleFile.name;
+// Revenue and orders by Customers  //////////////////////////////////
+router.get("/report/ReOrByUsers", (req, res) => {
+  var mysql = "SELECT U.UserID, U.FullName, SUM(O.Total) AS Total_revenue, COUNT(O.UserID) AS Total_orders\
+                FROM Users U, Orders O\
+                WHERE O.UserID = U.UserID\
+                GROUP BY U.UserID, U.FullName";
+    RunQuery(mysql, function(UserInfor) {
+        var content = {
+          title: "user",
+          usr: UserInfor,
+          customer: req.user
+        };
+        res.render("admin/Report/ReOrByUsers", content);
+    });
+});
+//////////////////////////////////////////////////////
 
-//     console.log(sampleFile);
-//     sampleFile.mv(uploadPath, function (err) {
-//         if (err) return res.status(500).send(err);
+// Revenue and Orders By Regions//////////////////////////////////
+router.get("/report/ReOrByRegions", (req, res) => {
+  var mysql = "SELECT U.City, SUM(U.UserID) AS Total_users, SUM(O.Total) AS Total_revenue, COUNT(O.UserID) AS Total_orders\
+                FROM Users U, Orders O\
+                WHERE O.UserID = U.UserID\
+                GROUP BY U.City";
+    RunQuery(mysql, function(UserInfor) {
+        var content = {
+          title: "user",
+          usr: UserInfor,
+          customer: req.user
+        };
+        res.render("admin/Report/ReOrByRegions", content);
+    });
+});
+//////////////////////////////////////////////////////
 
-//         connection.query('UPDATE Product SET img = ? WHERE id = "10"', [sampleFile.name], (err, rows) => {
-//             if (!err) {
-//                 console.log('sucess')
-//             } else {
-//                 console.log(err);
-//             }
-//         });
-
-//     });
-// });
+// Revenue and Orders By Categories//////////////////////////////////
+router.get("/report/ReOrByCats", (req, res) => {
+  var mysql = "SELECT C.CategoryName, COUNT(P.ProductName) AS Total_products, SUM(O.Quantity) AS Total_orders, SUM(O.Total) AS Total_revenue\
+                FROM Categories C,  `Order Details` O right join Products P on P.ProductID = O.ProductID\
+                WHERE C.CategoryID = P.CategoryID\
+                GROUP BY C.CategoryID";
+    RunQuery(mysql, function(UserInfor) {
+        var content = {
+          title: "user",
+          usr: UserInfor,
+          customer: req.user
+        };
+        res.render("admin/Report/ReOrByCats", content);
+    });
+});
+//////////////////////////////////////////////////////
 
 module.exports = router;

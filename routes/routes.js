@@ -22,10 +22,10 @@ router.all("/", isLoggedIn, function (req, res, next) {
   RunQuery(sqlStr, function (categories) {
     sqlStr =
       "\
-            SELECT Products.*, Categories.CategoryName, Categories.CategorySlug\
-            FROM Products\
-            INNER JOIN Categories\
-            ON Products.CategoryID = Categories.CategoryID\
+            SELECT P.*, C.CategoryName, C.CategorySlug\
+            FROM Products P\
+            INNER JOIN Categories C\
+            ON P.CategoryID = C.CategoryID\
             WHERE Feature = 1";
 
     RunQuery(sqlStr, function (products) {
@@ -64,10 +64,10 @@ router.route("/cat/:catSlug").all(isLoggedIn,function (req, res, next) {
   if (req.params.catSlug == "all") {
     var selectQuery =
       "\
-                SELECT Products.*, Categories.CategoryName, Categories.CategorySlug\
-                FROM Products\
-                INNER JOIN Categories\
-                ON Products.CategoryID = Categories.CategoryID";
+      SELECT P.*, C.CategoryName, C.CategorySlug\
+      FROM Products P\
+      INNER JOIN Categories C\
+      ON P.CategoryID = C.CategoryID";
 
     RunQuery(selectQuery, function (products) {
       selectQuery = "\
@@ -88,11 +88,11 @@ router.route("/cat/:catSlug").all(isLoggedIn,function (req, res, next) {
   } else {
     var sqlStr =
       "\
-                SELECT Products.*, Categories.CategoryName, Categories.CategorySlug\
-                FROM Products\
-                INNER JOIN Categories\
-                ON Products.CategoryID = Categories.CategoryID\
-                WHERE Categories.CategorySlug = '" +
+                SELECT P.*, C.CategoryName, C.CategorySlug\
+                FROM Products P\
+                INNER JOIN Categories C\
+                ON P.CategoryID = C.CategoryID\
+                WHERE C.CategorySlug = '" +
       req.params.catSlug +
       "'";
 
@@ -133,19 +133,6 @@ router.route("/cat/:catSlug/:prodSlug").all(isLoggedIn,function (req, res, next)
     };
 
     res.render("shop/productDetail/detail", contextDict);
-  });
-});
-
-router.route("/subscribe").post(isLoggedIn,function (req, res, next) {
-  var sqlStr =
-    "\
-        INSERT INTO Subscribers\
-        VALUES ('" +
-    req.body.email +
-    "')";
-
-  RunQuery(sqlStr, function (result) {
-    res.redirect("/");
   });
 });
 

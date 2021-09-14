@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="shop_sever@shop-do-user-9342162-0.b.db.ondigitalocean.com [2]" uuid="99443212-b5dc-4e99-8c56-48f0b687bd77">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://shop-do-user-9342162-0.b.db.ondigitalocean.com:25060/shop_sever</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="MySQL - shop_sever@shop-do-user-9342162-0.b.db.ondigitalocean.com" uuid="4eac17ee-643a-4bb2-8562-7d23dfc58dee">
+    <data-source source="LOCAL" name="shop_sever@shop-do-user-9342162-0.b.db.ondigitalocean.com" uuid="fb2a25f8-275c-4eb5-ba9d-0ec8e4c5c1e7">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>

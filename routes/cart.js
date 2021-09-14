@@ -101,10 +101,10 @@ router.route("/:id/add").post(function (req, res, next) {
 
   var selectQuery =
     "\
-            SELECT Products.*, Categories.CategorySlug\
-            FROM Products\
-            INNER JOIN Categories\
-            ON Products.CategoryID = Categories.CategoryID\
+            SELECT p.*, c.CategorySlug\
+            FROM Products p\
+            INNER JOIN Categories c\
+            ON p.CategoryID = c.CategoryID\
             WHERE ProductID = " +
     req.params.id;
 

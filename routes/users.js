@@ -3,8 +3,7 @@ module.exports = function (app, passport) {
       // render the page and pass in any flash data if it exists
       if (req.session.inCheckOut) {
         var checkOutNoti =
-          "You need to sign in to check out!\
-                    Please sign up if you do not have one!";
+          "You Need sign in If you don't have acount Please sign up";
         req.session.inCheckOut = false;
       }
       var contextDict = {
@@ -19,8 +18,8 @@ module.exports = function (app, passport) {
       "/sign-in",
       passport.authenticate("sign-in", {
         successRedirect: "/usr/",
-        failureRedirect: "/sign-in", // redirect back to the signup page if there is an error
-        failureFlash: true, // allow flash messages
+        failureRedirect: "/sign-in",
+        failureFlash: true,
       }),
       function (req, res, info) {
         res.render("shop/userlogin/login", { message: req.flash("message") });
@@ -28,12 +27,11 @@ module.exports = function (app, passport) {
     );
   
     app.get("/sign-up", function (req, res) {
-      // render the page and pass in any flash data if it exists
   
       if (req.session.inCheckOut) {
         var checkOutNoti =
-          "You need to sign Up to check out!\
-              Please sign in if you have yet!";
+          "You need to sign Up to buy product\
+            Loign if you have one";
         req.session.inCheckOut = false;
       }
   
@@ -49,9 +47,9 @@ module.exports = function (app, passport) {
     app.post(
       "/sign-up",
       passport.authenticate("sign-up", {
-        successRedirect: "/sign-in", // redirect to the secure profile section
-        failureRedirect: "/sign-up", // redirect back to the signup page if there is an error
-        failureFlash: true, // allow flash messages
+        successRedirect: "/sign-in",
+        failureRedirect: "/sign-up",
+        failureFlash: true,
       })
     );
   

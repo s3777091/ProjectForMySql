@@ -1,22 +1,18 @@
-
 <%- include('../sections/header.ejs') %>
 <%- include('../sections/menu.ejs') %>
 <table class="styled-table">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>StreetAddress</th>
+            <th>City</th>
+            <th>Number of customers</th>     
         </tr>
     </thead>
     <tbody>
-        <% usr.slice(1,3).map(function(ur){ %>
+        <% usr.forEach(function(ur){ %>
         <tr class="active-row">
-            <td><%= ur.FullName %></td>
-            <td><%= ur.StreetAddress %></td>
+            <td><%= ur.City %></td>
+            <td><%= ur.Number_Cus %></td>
         </tr>
         <% }); %>
     </tbody>
 </table>
-
-
-
