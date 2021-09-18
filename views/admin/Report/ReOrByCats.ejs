@@ -3,19 +3,19 @@
 <table class="styled-table">
     <thead>
         <tr>
+            <th>Category ID</th>
             <th>Category Name</th>
-            <th>Total products</th>
-            <th>Total revenue</th>
-            <th>Total orders</th>
+            <th>Total Units in Category</th>
+            <th>Total Products in Category</th>
         </tr>
     </thead>
     <tbody>
         <% usr.forEach(function(ur){ %>
         <tr class="active-row">
+            <td><%= ur.CategoryID %></td>
             <td><%= ur.CategoryName %></td>
-            <td><%= ur.Total_products %></td>
-            <td><%= ur.Total_revenue %></td>
-            <td><%= ur.Total_orders %></td>
+            <td><%= ur.TotalUnits %></td>
+            <td><%= ur.TotalProducts %></td>
         </tr>
         <% }); %>
     </tbody>

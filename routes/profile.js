@@ -55,9 +55,6 @@ router.post("/:username/edit/post", isLoggedIn, function (req, res) {
                   StreetAddress = '" +
     form.streetAddress +
     "', \
-                  PostCode = '" +
-    form.postcode +
-    "', \
                   City = '" +
     form.city +
     "', \

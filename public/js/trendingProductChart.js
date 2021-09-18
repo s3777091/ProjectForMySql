@@ -1,21 +1,21 @@
-ChartOrders();
+ChartUnitInStock();
 // gọi function chartUnitInStock
-async function ChartOrders() {
+async function ChartUnitInStock() {
   const data = await getData();
   //goi lai function getData()
-  const ctx = document.getElementById("ChartOrders").getContext("2d");
+  const ctx = document.getElementById("ProductTrending").getContext("2d");
   // tên biến id của chart là UnitInStockChart
 
   const myChart = new Chart(ctx, {
-    type: "line",
+    type: "radar",
     // bar char
     data: {
       labels: data.XproductName,
       // data trục x cần bỏ
       datasets: [
         {
-          label: "Orders",
-          data: data.YSubTotal,
+          label: "Products Y",
+          data: data.YpSold,
           // data trục y cần bỏ
           backgroundColor: ["rgba(255, 99, 132, 0.2)"],
           // bỏ màu cho nó
@@ -26,6 +26,10 @@ async function ChartOrders() {
     },
     options: {
       scales: {
+        y: {
+          beginAtZero: true,
+          // cái này là dùng để thay đổi cấu trúc trụ Y ví dụ nó sẽ bắt đầu từ 0 or có thể thêm đơn vị cái bên cạnh số lượng sản phẩm
+        },
       },
     },
   });
@@ -33,11 +37,11 @@ async function ChartOrders() {
 
 async function getData() {
   const XproductName = [];
-  const YSubTotal = [];
+  const YpSold = [];
   // tạo biến private
   // mở crt + F11 mở cửa sổ console sẽ thấy
   // gọi giá trị stock là cái nhập vào đẻ filter nhưng ko hiểu sao ko vào
-  const response = await fetch("http://localhost:9999/admin/api/order1000");
+  const response = await fetch('http://localhost:9999/admin/api/top10trendingproduct');
 
   // sử dụng api từ web
   const data = await response.json();
@@ -45,11 +49,11 @@ async function getData() {
   for (let item in data) {
     //vòng lặp
     var ProductName = data[item].ProductName;
-    var SubTotal = data[item].SubTotal;
+    var ProductSold = data[item].ProductSold;
     // bỏ data vào với biến productName và số lương sản phẩm
     XproductName.push(ProductName);
-    YSubTotal.push(SubTotal);
+    YpSold.push(ProductSold);
     //thêm giá trị của data vào hai biến đã gọi ở trên
   }
-  return { XproductName, YSubTotal };
+  return { XproductName, YpSold };
 }

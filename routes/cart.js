@@ -1,88 +1,96 @@
 var express = require("express");
 var router = express.Router();
 
-// database module
+// This function use to call the data sever from digital ocean
 var database = require("../config/database");
 var RunQuery = database.RunQuery;
 
 router.route("/").all(function (req, res, next) {
   var summary = req.session.summary;
+  var cart = req.session.cart;
   var cartSummary;
-
+  var showCart = [];
+  //i create 2 variable and session summary is call back function to graph back the summary
+    //create 1 variable with call back function and array
   if (summary)
     cartSummary = {
-      subTotal: summary.subTotal.toFixed(2),
-      discount: summary.discount.toFixed(2),
-      shipCost: summary.shipCost.toFixed(2),
       total: summary.total.toFixed(2),
+      subTotal: summary.subTotal.toFixed(2),
     };
-
-  var cart = req.session.cart;
-  var showCart = [];
-
+    //function to check the did they use the discount or shipCost if need
   for (var item in cart) {
     var aItem = cart[item];
     if (cart[item].quantity > 0) {
       showCart.push({
-        Image: aItem.Image,
-        ProductSlug: aItem.ProductSlug,
-        CategorySlug: aItem.CategorySlug,
-        ProductID: aItem.ProductID,
-        ProductName: aItem.ProductName,
-        Description: aItem.Description,
-        ProductPrice: aItem.ProductPrice,
-        quantity: aItem.quantity,
+        //in hear aItem is variale i call below the loop for the variable mean to take the collumn in mysql
         productTotal: aItem.productTotal.toFixed(2),
+        ProductSlug: aItem.ProductSlug,
+        Image: aItem.Image,
+        ProductID: aItem.ProductID,
+        Description: aItem.Description,
+        ProductName: aItem.ProductName,
+        ProductPrice: aItem.ProductPrice,
+        CategorySlug: aItem.CategorySlug,
+        quantity: aItem.quantity,
       });
     }
   }
-
+  //loop for all of element in cart and check if the iteams is greater than 0 push them to user interface
   req.session.showCart = showCart;
   req.session.cartSummary = cartSummary;
-
-  var contextDict = {
-    title: "Cart",
+  //two call back
+  var content = {
+    title: "Cart Page",
     customer: req.user,
     cart: showCart,
     summary: cartSummary,
   };
-  res.render("shop/cart/cart", contextDict);
+  //in here is the function to take all the element call before to render it in ejs design
+  res.render("shop/cart/cart", content);
+  //res.render mean where to display that element in shop/cart/cart is the file, content variable to graph all element.
 });
 
-router.route("/:id/update").post(function (req, res, next) {
+router.route("/:id/updateitem").post(function (req, res, next) {
+  //this is rouetr to update back the cost and quality when user increase or want to buy more product
   var cart = req.session.cart;
-  var newQuantity = parseInt(req.body[req.params.id]);
-
+  var newQuantityItem = parseInt(req.body[req.params.id]);
   for (var item in cart) {
+    //loop for all item in cart
     if (cart[item].ProductID == req.params.id) {
-      var diff = newQuantity - cart[item].quantity;
-
-      if (diff != 0) {
+      // check item prodict id of the item
+      var diffirent = newQuantityItem - cart[item].quantity;
+      if (diffirent != 0) {
         var summary = req.session.summary;
-
-        summary.totalQuantity += diff;
-        summary.subTotal = summary.subTotal + cart[item].ProductPrice * diff;
-        summary.total = summary.total + cart[item].ProductPrice * diff;
+        summary.totalQuantity += diffirent;
+        //in the begin i call back the summary to ta
+        summary.subTotal = summary.subTotal + cart[item].ProductPrice * diffirent;
+        //math to caculate the subtotal and return the price
+        summary.total = summary.total + cart[item].ProductPrice * diffirent;
         cart[item].productTotal =
-          cart[item].productTotal + cart[item].ProductPrice * diff;
-        cart[item].quantity = newQuantity;
+          cart[item].productTotal + cart[item].ProductPrice * diffirent;
+        cart[item].quantity = newQuantityItem;
       }
     }
   }
-
   res.redirect("/cart");
 });
 
-router.route("/:id/delete").post(function (req, res, next) {
-  var cart = req.session.cart;
+
+//router to delete the item 
+router.route("/:id/deleteitem").post(function (req, res, next) {
+  var callbackcart = req.session.cart;
   var summary = req.session.summary;
 
-  summary.totalQuantity -= cart[req.params.id].quantity;
-  cart[req.params.id].quantity = 0;
-  summary.subTotal = summary.subTotal - cart[req.params.id].productTotal;
-  summary.total = summary.total - cart[req.params.id].productTotal;
-  cart[req.params.id].productTotal = 0;
-
+  //in here i call back two variable
+  summary.totalQuantity -= callbackcart[req.params.id].quantity;
+  // first one update new quality
+  callbackcart[req.params.id].quantity = 0;
+  // bring that quality to 0
+  summary.subTotal = summary.subTotal - callbackcart[req.params.id].productTotal;
+  // use subtotal minus the productotal
+  summary.total = summary.total - callbackcart[req.params.id].productTotal;
+  callbackcart[req.params.id].productTotal = 0;
+  //then bring it to 0
   res.redirect("/cart");
 });
 
@@ -93,8 +101,6 @@ router.route("/:id/add").post(function (req, res, next) {
   req.session.summary = req.session.summary || {
     totalQuantity: 0,
     subTotal: 0.0,
-    discount: 0.0,
-    shipCost: 0.0,
     total: 0.0,
   };
   var summary = req.session.summary;
@@ -109,42 +115,43 @@ router.route("/:id/add").post(function (req, res, next) {
     req.params.id;
 
   RunQuery(selectQuery, function (rows) {
-    var plusPrice = 0.0;
+    var pls = 0.0;
     var inputQuantity = parseInt(req.body.quantity);
-
+  //in here is the function to check the product total price and if the input quality increase it will retunr the caculate
+  //and update the real price for user
     if (cart[req.params.id]) {
       if (inputQuantity) {
         cart[req.params.id].quantity += inputQuantity;
-        plusPrice = cart[req.params.id].ProductPrice * inputQuantity;
-        cart[req.params.id].productTotal += plusPrice;
-        summary.subTotal += plusPrice;
+        pls = cart[req.params.id].ProductPrice * inputQuantity;
+        cart[req.params.id].productTotal += pls;
+        summary.subTotal += pls;
         summary.totalQuantity += inputQuantity;
       } else {
         cart[req.params.id].quantity++;
-        plusPrice = cart[req.params.id].ProductPrice;
-        cart[req.params.id].productTotal += plusPrice;
-        summary.subTotal += plusPrice;
+        pls = cart[req.params.id].ProductPrice;
+        cart[req.params.id].productTotal += pls;
+        summary.subTotal += pls;
         summary.totalQuantity++;
       }
     } else {
+      //if the function item not have any value we will update them
       cart[req.params.id] = rows[0];
-
       if (req.body.quantity) {
         cart[req.params.id].quantity = inputQuantity;
-        plusPrice = cart[req.params.id].ProductPrice * inputQuantity;
-        cart[req.params.id].productTotal = plusPrice;
-        summary.subTotal += plusPrice;
+        pls = cart[req.params.id].ProductPrice * inputQuantity;
+        cart[req.params.id].productTotal = pls;
+        summary.subTotal += pls;
         summary.totalQuantity += inputQuantity;
       } else {
         rows[0].quantity = 1;
-        plusPrice = cart[req.params.id].ProductPrice;
-        cart[req.params.id].productTotal = plusPrice;
-        summary.subTotal += plusPrice;
+        pls = cart[req.params.id].ProductPrice;
+        cart[req.params.id].productTotal = pls;
+        summary.subTotal += pls;
         summary.totalQuantity++;
       }
     }
 
-    summary.total = summary.subTotal - summary.discount + summary.shipCost;
+    summary.total = summary.subTotal;
 
     res.redirect("/cart");
   });

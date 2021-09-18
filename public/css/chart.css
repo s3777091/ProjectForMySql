@@ -1,5 +1,9 @@
 .container{
     position: absolute;
-    top: 30%;
+    top: 50%;
     left: 30%;
+}
+
+.PaddingChart{
+    padding-top: 50px
 }

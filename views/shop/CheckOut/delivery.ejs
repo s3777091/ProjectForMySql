@@ -8,8 +8,8 @@
   <form action="/checkout/delivery/<%=ad.AddressID%>" method="post">
     <div class="form">
       <h2>
-        Here is your shipping detail: <%= ad.StreetAddress %>, <%= ad.City %> In
-        <%= ad.Country %>, And Phone number <%= ad.Phone %>
+        Here is your shipping detail: <%= ad.DeliveryStreetAddress %>, <%= ad.DeliveryCity %> In
+        <%= ad.DeliveryCountry %>, And Phone number <%= ad.Phone %>
       </h2>
       <button class="button" type="submit">
         If this address is your press here
@@ -48,10 +48,6 @@
           id="streetAddress"
           name="streetAddress"
         />
-      </label>
-      <label for="postcode" class="field">
-        <span class="field__label" for="postcode">Zip code</span>
-        <input class="field__input" type="text" id="postcode" name="postcode" />
       </label>
 
       <label for="city" class="field">

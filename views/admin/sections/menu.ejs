@@ -15,23 +15,28 @@
 </head>
 
 <body>
-  <!--========== HEADER ==========-->
-  <header class="header">
-    <div class="header__container">
-      <img src="assets/img/perfil.jpg" alt="" class="header__img">
+  <% if (customer) { %>
+    <header class="header">
+      <div class="header__container">
+        <a href="/usr/<%= customer.Username %>" class="nav__link active">
+        <img
+          src="<%= customer.Avatar %>"
+          alt=""
+          class="header__img"
+        />
+      </a>
 
-      <title>SHOPEE 2.0</title>
+        <div class="header__search">
+          <input type="search" placeholder="Search" class="header__input" />
+          <i class="bx bx-search header__icon"></i>
+        </div>
 
-      <div class="header__search">
-        <input type="search" placeholder="Search" class="header__input">
-        <i class='bx bx-search header__icon'></i>
+
+        <div class="header__toggle">
+          <i class="bx bx-menu" id="header-toggle"></i>
+        </div>
       </div>
-
-      <div class="header__toggle">
-        <i class='bx bx-menu' id="header-toggle"></i>
-      </div>
-    </div>
-  </header>
+    </header>
 
   <!--========== NAV ==========-->
   <div class="nav" id="navbar">
@@ -39,7 +44,7 @@
       <div>
         <a href="#" class="nav__link nav__logo">
           <i class='bx bxs-disc nav__icon'></i>
-          <span class="nav__logo-name">SHOPEE 2.0</span>
+          <span class="nav__logo-name">You are ADMIN: <%= customer.FullName %></span>
         </a>
 
         <div class="nav__list">
@@ -60,17 +65,12 @@
 
               <div class="nav__dropdown-collapse">
                 <div class="nav__dropdown-content">
-                  <a href="#" class="nav__dropdown-item">Passwords</a>
-                  <a href="#" class="nav__dropdown-item">Mail</a>
-                  <a href="/auth/login" class="nav__dropdown-item">Login</a>
+                  <a href="/usr/<%= customer.Username %>" class="nav__dropdown-item">Passwords</a>
+                  <a href="/usr/<%= customer.Username %>" class="nav__dropdown-item">Mail</a>
+                  <a href="/sign-in" class="nav__dropdown-item">Login</a>
                 </div>
               </div>
             </div>
-
-            <a href="#" class="nav__link">
-              <i class='bx bx-message-rounded nav__icon'></i>
-              <span class="nav__name">Messages</span>
-            </a>
           </div>
 
           <div class="nav__items">
@@ -78,8 +78,8 @@
 
             <div class="nav__dropdown">
               <a href="#" class="nav__link">
-                <i class='bx bx-bell nav__icon'></i>
-                <span class="nav__name">Report And Chart</span>
+                <i class='bx bxs-report' ></i>
+                <span class="nav__name">Report</span>
                 <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
               </a>
 
@@ -97,31 +97,48 @@
                   <a href="/admin/report/Productinfo" class="nav__dropdown-item">Product Infor</a>
 
                   <a href="/admin/report/Userinfo" class="nav__dropdown-item">User Infor</a>
+
+                  <a href="/admin/report/ReProductsByCate" class="nav__dropdown-item">Products by Category</a>
+
+                  <a href="/admin/report/ReTop10Order" class="nav__dropdown-item">Top 10 Orders by Values</a>
                 </div>
               </div>
+            </div>
+
+            <div class="nav__dropdown">
+              <a href="#" class="nav__link">
+                <i class='bx bxs-bar-chart-alt-2'></i>
+                <span class="nav__name">Chart</span>
+                <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+              </a>
 
               <div class="nav__dropdown-collapse">
                 <div class="nav__dropdown-content">
-                  <a href="/admin/chart" class="nav__dropdown-item">Chart</a>
+                  <a href="/admin/chart" class="nav__dropdown-item">User spend</a>
+
                   <a href="/admin/Orderschart" class="nav__dropdown-item">Orders Chart</a>
+
+                  <a href="/admin/sales" class="nav__dropdown-item">Sales Chart</a>
+
+                  <a href="/admin/ManuYearChart" class="nav__dropdown-item">Manufacturing year Chart</a>
+
+                  <a href="/admin/TrendingProChart" class="nav__dropdown-item">Trending Products Chart</a>
                 </div>
               </div>
+              
             </div>
           </div>
         </div>
       </div>
 
-      <a href="#" class="nav__link nav__logout">
+      <a href="/sign-out" class="nav__link nav__logout">
         <i class='bx bx-log-out nav__icon'></i>
         <span class="nav__name">Log Out</span>
       </a>
     </nav>
   </div>
+  <% } %>
 
-  <!--========== CONTENTS ==========-->
-
-
-  <!--========== MAIN JS ==========-->
   <script src="/js/menu.js"></script>
 </body>
 

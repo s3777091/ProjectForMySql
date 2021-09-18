@@ -1,0 +1,27 @@
+<%- include('../sections/menu.ejs') %>
+
+<header>
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  />
+</header>
+<body>
+  <h1>My Chart</h1>
+  <div class="container">
+    <canvas id="daySales" width="400" height="100"></canvas>
+  </div>
+
+  <div class="container">
+    <canvas id="monthSales" width="400" height="100"></canvas>
+  </div>
+
+  <div class="container">
+    <canvas id="yearSales" width="400" height="100"></canvas>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script src="/js/salesChartDay.js"></script>
+  <script src="/js/salesChartMonth.js"></script>
+  <script src="/js/salesChartYear.js"></script>
+
+</body>
