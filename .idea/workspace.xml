@@ -2,20 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dfb19823-2ebf-4ce8-8a82-50b6c79f5ba5" name="Default" comment="delete">
-      <change afterPath="$PROJECT_DIR$/views/shop/UserProfile/userorder.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fb2a25f8-275c-4eb5-ba9d-0ec8e4c5c1e7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fb2a25f8-275c-4eb5-ba9d-0ec8e4c5c1e7.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopSever.sql" beforeDir="false" afterPath="$PROJECT_DIR$/ShopSever.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Orders.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/UnitStock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/cart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/checkout.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/checkout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/shop/CheckOut/comfirm.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/shop/CheckOut/comfirm.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/shop/UserProfile/UserProfile.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/shop/UserProfile/UserProfile.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/shop/UserProfile/changepassword.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/shop/UserProfile/changepassword.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -811,7 +806,12 @@
       <workItem from="1631505060780" duration="57000" />
       <workItem from="1631505308505" duration="3194000" />
       <workItem from="1631508936534" duration="6000" />
-      <workItem from="1631591692738" duration="742000" />
+      <workItem from="1631591692738" duration="1362000" />
+      <workItem from="1631784598884" duration="11523000" />
+      <workItem from="1631800831506" duration="380000" />
+      <workItem from="1631801241364" duration="502000" />
+      <workItem from="1631854229260" duration="554000" />
+      <workItem from="1631958552766" duration="5333000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1449407463649</created>

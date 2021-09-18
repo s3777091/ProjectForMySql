@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "json:server": "json-server --watch data/UnitStock.json"
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "bcrypt-nodejs": "~0.0.3",

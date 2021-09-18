@@ -92,16 +92,15 @@ CREATE TABLE `Users` (
 CREATE INDEX `Username` ON `Users` (`Username`);
 
 
-SELECT * FROM Addresses;
-CREATE TABLE `Addresses` (
+
+SELECT * FROM DeliveryAdresses;
+CREATE TABLE `DeliveryAdresses` (
   `AddressID`     INTEGER      NOT NULL AUTO_INCREMENT,
   `UserID`        INTEGER,
   `FullName`      VARCHAR(50)  NOT NULL,
-  `StreetAddress` VARCHAR(255) NOT NULL,
-  `PostCode`      VARCHAR(5)   NOT NULL,
-  `City`          VARCHAR(28)  NOT NULL,
-  `Country`       VARCHAR(28)  NOT NULL,
-  `Avatar` VARCHAR(255) NOT NULL,
+  `DeliveryStreetAddress` VARCHAR(255) NOT NULL,
+  `DeliveryCity`          VARCHAR(28)  NOT NULL,
+  `DeliveryCountry`       VARCHAR(28)  NOT NULL,
   `Phone`         VARCHAR(12)  NOT NULL,
   CONSTRAINT `PK_Addresses` PRIMARY KEY (`AddressID`),
   CONSTRAINT `FK_Users_UserID` FOREIGN KEY (`UserID`) REFERENCES `Users` (`UserID`) ON DELETE CASCADE
@@ -112,8 +111,6 @@ CREATE TABLE `Orders` (
   `UserID`    INTEGER NOT NULL,
   `AddressID` INTEGER NOT NULL,
   `SubTotal`  DECIMAL(10,2),
-  `Discount`  DECIMAL(10,2),
-  `ShippingFee`  DECIMAL(10,2),
   `Total`  DECIMAL(10,2),
   `OrderDate` DATETIME,
   `Status`    VARCHAR(150) NOT NULL,

@@ -163,8 +163,9 @@ module.exports = function (passport) {
                     var user = {
                       UserID: insertResult.insertId,
                     };
+
                     insertQuery =
-                      "INSERT INTO Addresses\
+                      "INSERT INTO DeliveryAdresses\
                                         VALUES(null, " +
                       insertResult.insertId +
                       ", '" +
@@ -177,8 +178,6 @@ module.exports = function (passport) {
                       City +
                       "', '" +
                       Country +
-                      "', '" +
-                      Avatar +
                       "', '" +
                       Phone +
                       "')";

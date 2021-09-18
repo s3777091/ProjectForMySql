@@ -27,7 +27,7 @@ router.route("/delivery").get(function (req, res, next) {
   var selectQuery =
     "\
             SELECT *\
-            FROM Addresses\
+            FROM DeliveryAdresses\
             WHERE UserID = " +
     req.user.UserID +
     ";";
@@ -62,7 +62,7 @@ router.route("/delivery/new").post(function (req, res, next) {
   // add address
   var insertQuery =
     "\
-            INSERT INTO Addresses\
+            INSERT INTO DeliveryAdresses\
             VALUES(null, " +
     req.user.UserID +
     ", '" +
@@ -100,7 +100,7 @@ router.route("/delivery/:id").post(function (req, res, next) {
   var selectQuery =
     "\
             SELECT *\
-            FROM Addresses\
+            FROM DeliveryAdresses\
             WHERE AddressID = " +
     req.params.id +
     ";";
@@ -189,7 +189,7 @@ router.route("/order").get(function (req, res, next) {
       selectQuery =
         "\
                 SELECT *\
-                FROM Addresses\
+                FROM DeliveryAdresses\
                 WHERE AddressID = " +
         order[0].AddressID;
 

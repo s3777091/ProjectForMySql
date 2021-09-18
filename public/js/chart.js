@@ -7,7 +7,7 @@ async function ChartUnitInStock() {
   // tên biến id của chart là UnitInStockChart
 
   const myChart = new Chart(ctx, {
-    type: "bar",
+    type: "radar",
     // bar char
     data: {
       labels: data.XproductName,
