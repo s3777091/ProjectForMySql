@@ -12,59 +12,58 @@ var csrf = require('csrf');
 var session = require('express-session');
 var passport = require('passport');
 var flash = require('connect-flash');
+// import library
 
 var app = express();
 
-// view engine setup
+// setting view for user
 app.set('views', path.join(__dirname, 'views'));
+//run file ejs config
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
-//Reformat HTML code after renders
+//make html look better while render
 app.locals.pretty = true;
 
+
+
 // set up express application
-    // setup favicon if needed
+    // setting favicon icon
 app.use(favicon(path.join(__dirname, 'public', '/img/ico/favicon.ico')));
-    // log every request to the console
+    //  consoloe log req
 app.use(morgan('dev'));
-    // csrf token init
+    // csrf config
 var csrfProtection = csrf({ cookie: true });
-    // get info from html forms
+    // run html form
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-    // read cookies
+    // cookies acception
 app.use(cookieParser());
-    // setup static directory
+    // static directory
 app.use(express.static(path.join(__dirname, 'public')));
-    // setup session secret
+    // setting secret
 app.use(session({ secret: 'dathuynh', saveUninitialized: true, resave: true }));
     // pass passport for configuration
 require('./config/passport')(passport);
     // init passport
 app.use(passport.initialize());
-    // persistent login sessions
+    // use passport to longin session
 app.use(passport.session());
-    // use connect-flash for flash messages stored in session
+    // this one use to connect with flash
 app.use(flash());
 
-// routes
+
+//import router file from router dictory
 var routes = require('./routes/routes');
 var users = require('./routes/users')(app, passport);
 var products = require('./routes/cart');
 var checkout = require('./routes/checkout');
-// var press = require('./routes/press');
-// var services = require('./routes/services');
-// var contact = require('./routes/contact');
 var admin = require('./routes/admin');
 var profile = require('./routes/profile');
-const { version } = require('os');
 
+//link of router
 app.use('/', routes);
 app.use('/cart', products);
 app.use('/checkout', checkout);
-// app.use('/press', press);
-// app.use('/services', services);
-// app.use('/contact-us', contact);
 app.use('/admin', admin);
 app.use('/usr', profile);
 
@@ -86,15 +85,12 @@ app.use(function(req, res, next){
 });
 
 
-// catch 404 and forward to error handler
+// catch 404 and forward to error handler then render the page 404
 app.use(function (req, res, next) {
     res.status(404).render('404');
 });
 
-// error handlers
-
-// development error handler
-// will print stacktrace
+// error status
 if (app.get('env') === 'development') {
     app.use(function (err, req, res, next) {
         res.status(err.status || 500);
@@ -105,8 +101,6 @@ if (app.get('env') === 'development') {
     });
 }
 
-// production error handler
-// no stacktraces leaked to user
 app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {

@@ -60,14 +60,6 @@ UPDATE Products
 SET Banner_event = 'https://cf.shopee.vn/file/f4dfbba1e575489c4a8de620dfba8bf5_xxhdpi'
 WHERE ProductID = 4;
 
-SELECT * FROM Products;
-
-SELECT * FROM Categories;
-
-SELECT * FROM Users;
-
-
-
 UPDATE Users
 SET Avatar = 'https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png'
 WHERE UserID = 2;
@@ -77,7 +69,6 @@ CREATE TABLE `Users` (
 #   `UserShopPost`  VARCHAR(255) NOT NULL,
   `FullName`      VARCHAR(50)  NOT NULL,
   `StreetAddress` VARCHAR(255) NOT NULL,
-  `PostCode`      VARCHAR(5)   NOT NULL,
   `City`          VARCHAR(28)  NOT NULL,
   `Country`       VARCHAR(28)  NOT NULL,
   `Avatar` VARCHAR(255) NOT NULL,

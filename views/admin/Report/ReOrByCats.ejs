@@ -5,8 +5,9 @@
         <tr>
             <th>Category ID</th>
             <th>Category Name</th>
-            <th>Total Units in Category</th>
             <th>Total Products in Category</th>
+            <th>Total Order in Category</th>
+            <th>Total Order in Revenue</th>
         </tr>
     </thead>
     <tbody>
@@ -14,8 +15,9 @@
         <tr class="active-row">
             <td><%= ur.CategoryID %></td>
             <td><%= ur.CategoryName %></td>
-            <td><%= ur.TotalUnits %></td>
-            <td><%= ur.TotalProducts %></td>
+            <td><%= ur.Total_orders %></td>
+            <td><%= ur.Total_products %></td>
+            <td><%= ur.Total_revenue %></td>
         </tr>
         <% }); %>
     </tbody>

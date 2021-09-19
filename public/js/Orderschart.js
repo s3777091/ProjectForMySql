@@ -45,7 +45,7 @@ async function getData() {
   for (let item in data) {
     //vòng lặp
     var ProductName = data[item].ProductName;
-    var SubTotal = data[item].SubTotal;
+    var SubTotal = data[item].Quantity;
     // bỏ data vào với biến productName và số lương sản phẩm
     XproductName.push(ProductName);
     YSubTotal.push(SubTotal);

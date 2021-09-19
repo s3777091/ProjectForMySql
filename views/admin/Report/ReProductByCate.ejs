@@ -1,0 +1,22 @@
+<%- include('../sections/header.ejs') %>
+<%- include('../sections/menu.ejs') %>
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>Category ID</th>
+            <th>Category Name</th>
+            <th>Total units</th>
+            <th>Total Products</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% productCategory.forEach(function(pr){ %>
+        <tr class="active-row">
+            <td><%= pr.CategoryID %></td>
+            <td><%= pr.CategoryName %></td>
+            <td><%= pr.TotalUnits %></td>
+            <td><%= pr.TotalProducts %></td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>

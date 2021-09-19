@@ -20,7 +20,7 @@ router.all("/", isAdmin, (req, res) => {
     res.render("admin/adminapp", {
       title: "Shopee 2.0",
       product: product,
-      customer: req.user
+      customer: req.user,
     });
   });
 });
@@ -28,7 +28,7 @@ router.all("/", isAdmin, (req, res) => {
 router.get("/add_product", isAdmin, (req, res) => {
   res.render("admin/form/add_product_form", {
     title: "Shopee 2.0",
-    customer: req.user
+    customer: req.user,
   });
 });
 
@@ -60,7 +60,7 @@ router.get("/edit/:ProductSlug", isAdmin, (req, res) => {
     res.render("admin/form/update_form", {
       title: "Shopee 2.0",
       product: result[0],
-      customer: req.user
+      customer: req.user,
     });
   });
 });
@@ -97,7 +97,7 @@ router.get("/delete/:ProductSlug", isAdmin, (req, res) => {
   });
 });
 
-router.get("/api/topuser", isAdmin,(req, res) => {
+router.get("/api/topuser", isAdmin, (req, res) => {
   let sqlStr =
     "SELECT DISTINCT U.Username,COUNT(*) AS Quality, SUM(O.SubTotal) AS TOTALMONEY FROM Users U, Orders O, `Order Details` OD WHERE U.UserID = O.UserID AND OD.OrderID = O.OrderID GROUP BY U.UserID HAVING COUNT(*) >= 2";
   RunQuery(sqlStr, function (user) {
@@ -105,32 +105,33 @@ router.get("/api/topuser", isAdmin,(req, res) => {
   });
 });
 
-router.get("/chart", isAdmin,(req, res) => {
+router.get("/chart", isAdmin, (req, res) => {
   res.render("admin/Chart/StockChart", {
     title:
       "Display who buy more than 2 product and total money which they spend to buy product",
-      customer: req.user,
+    customer: req.user,
   });
 });
 
 // Orders chart-----------------------------------------
 // Orders JSon
-router.get("/api/sales/chartinday", isAdmin,(req, res) => {
+router.get("/api/sales/chartinday", isAdmin, (req, res) => {
   let sqlStr = "SELECT * FROM Products";
   RunQuery(sqlStr, function (product) {
     res.json(product);
   });
 });
 
-router.get("/api/order1000", isAdmin,(req, res) => {
-  let sqlStr = "SELECT * FROM Products P, Orders O, `Order Details` OD WHERE P.ProductID = OD.ProductID AND O.OrderID = OD.OrderID HAVING O.SubTotal >= 1000";
+router.get("/api/order1000", isAdmin, (req, res) => {
+  let sqlStr =
+    "SELECT * FROM Products P, Orders O, `Order Details` OD WHERE P.ProductID = OD.ProductID AND O.OrderID = OD.OrderID HAVING O.SubTotal >= 1000";
   RunQuery(sqlStr, function (or) {
     res.json(or);
   });
 });
 
 // Orders chart Page
-router.get("/Orderschart", isAdmin,(req, res) => {
+router.get("/Orderschart", isAdmin, (req, res) => {
   res.render("admin/Orderschart/Orders", {
     title: "Shopee 2.0",
     customer: req.user,
@@ -138,7 +139,7 @@ router.get("/Orderschart", isAdmin,(req, res) => {
 });
 
 // ------------------------------------------------------
-router.get("/api/SalesOverTimeChartDay", isAdmin,(req, res) => {
+router.get("/api/SalesOverTimeChartDay", isAdmin, (req, res) => {
   let sqlStr =
     "SELECT SUM(Total) AS Sales, DATE_FORMAT(OrderDate, '%d %M %Y') AS Time FROM Orders GROUP BY DATE_FORMAT(OrderDate, '%d %M %Y')";
   RunQuery(sqlStr, function (chart) {
@@ -147,14 +148,14 @@ router.get("/api/SalesOverTimeChartDay", isAdmin,(req, res) => {
 });
 
 // SOT PageS
-router.get("/sales", isAdmin,(req, res) => {
+router.get("/sales", isAdmin, (req, res) => {
   res.render("admin/Chart/SalesDay", {
     title: "Sales Over Time by Day",
     customer: req.user,
   });
 });
 
-router.get("/api/SalesOverTimeChartMonths", isAdmin,(req, res) => {
+router.get("/api/SalesOverTimeChartMonths", isAdmin, (req, res) => {
   let sqlStr =
     "SELECT SUM(Total) AS Sales, DATE_FORMAT(OrderDate, '%M %Y') AS Time FROM Orders GROUP BY DATE_FORMAT(OrderDate, '%M %Y')";
   RunQuery(sqlStr, function (chart) {
@@ -170,26 +171,11 @@ router.get("/api/SalesYear", isAdmin, (req, res) => {
   });
 });
 
-router.get("/api/top10trendingproduct", isAdmin,(req, res) => {
+router.get("/api/top10trendingproduct", isAdmin, (req, res) => {
   let sqlStr =
     "SELECT ProductName, ProductSold FROM Products P JOIN (SELECT ProductID, COUNT(ProductID) AS ProductSold FROM `Order Details` GROUP BY ProductID ORDER BY COUNT(ProductID) DESC LIMIT 10) A ON A.ProductID = P.ProductID";
   RunQuery(sqlStr, function (chart) {
     res.json(chart);
-  });
-});
-
-router.get("/api/manuyear", isAdmin,(req, res) => {
-  let sqlStr =
-    "SELECT ManufactureYear, COUNT(*) AS Quantity FROM Products GROUP BY ManufactureYear ORDER BY 1 ASC";
-  RunQuery(sqlStr, function (year) {
-    res.json(year);
-  });
-});
-
-router.get("/ManuYearChart",isAdmin, (req, res) => {
-  res.render("admin/Chart/YearManu", {
-    title: "Manufractuing Year Chart",
-    customer: req.user,
   });
 });
 
@@ -200,10 +186,41 @@ router.get("/TrendingProChart", isAdmin,(req, res) => {
   });
 });
 
+
+router.get("/api/manuyear", isAdmin, (req, res) => {
+  let sqlStr =
+    "SELECT ManufactureYear, COUNT(*) AS Quantity FROM Products GROUP BY ManufactureYear ORDER BY 1 ASC";
+  RunQuery(sqlStr, function (year) {
+    res.json(year);
+  });
+});
+
+router.get("/UnitInStock", isAdmin, (req, res) => {
+  res.render("admin/UnitInStockChart/UnitInStockChart", {
+    title: "UnitInStockChart Chart",
+    customer: req.user,
+  });
+});
+
+
+router.get("/api/UnitInStock", isAdmin, (req, res) => {
+  let sqlStr = "SELECT * FROM Products";
+  RunQuery(sqlStr, function (Unit) {
+    res.json(Unit);
+  });
+});
+
+router.get("/sales", isAdmin, (req, res) => {
+  res.render("admin/Chart/SalesDay", {
+    title: "Sales Over Time by Day",
+    customer: req.user,
+  });
+});
+
 // ------------------------------------------------------
 
 // Total users report //////////////////////////////////
-router.get("/report/Userinfo", isAdmin,(req, res) => {
+router.get("/report/Userinfo", isAdmin, (req, res) => {
   var mysql = "SELECT * FROM Users";
   RunQuery(mysql, function (UserInfor) {
     var content = {
@@ -216,7 +233,7 @@ router.get("/report/Userinfo", isAdmin,(req, res) => {
 });
 
 // Total products report //////////////////////////////////
-router.get("/report/Productinfo", isAdmin,(req, res) => {
+router.get("/report/Productinfo", isAdmin, (req, res) => {
   var mysql = "SELECT * FROM Products";
   RunQuery(mysql, function (UserInfor) {
     var content = {
@@ -230,7 +247,7 @@ router.get("/report/Productinfo", isAdmin,(req, res) => {
 //////////////////////////////////////////////////////
 
 // >= 1000 units products report //////////////////////////////////
-router.get("/report/Product1000", isAdmin,(req, res) => {
+router.get("/report/Product1000", isAdmin, (req, res) => {
   var mysql =
     "SELECT P.Image,P.ProductID, P.ProductName, P.UnitsInStock\
                 FROM Products P\
@@ -247,7 +264,7 @@ router.get("/report/Product1000", isAdmin,(req, res) => {
 //////////////////////////////////////////////////////
 
 // City and Number of Users in  //////////////////////////////////
-router.get("/report/UsersFromCity", isAdmin,(req, res) => {
+router.get("/report/UsersFromCity", isAdmin, (req, res) => {
   var mysql =
     "SELECT U.City, COUNT(*) AS Number_Cus\
                 FROM Users U\
@@ -261,10 +278,9 @@ router.get("/report/UsersFromCity", isAdmin,(req, res) => {
     res.render("admin/Report/UsersFromCity", content);
   });
 });
-//////////////////////////////////////////////////////
 
 // Revenue by Products  //////////////////////////////////
-router.get("/report/RevenueByProducts", isAdmin,(req, res) => {
+router.get("/report/RevenueByProducts", isAdmin, (req, res) => {
   var mysql =
     "SELECT P.Image, P.ProductName, P.ProductID, P.ProductPrice, SUM(O.Total) AS Total_revenue FROM Products P, `Order Details` O WHERE P.ProductID = O.ProductID GROUP BY P.ProductName, P.ProductID, P.ProductPrice, P.Image";
   RunQuery(mysql, function (UserInfor) {
@@ -276,12 +292,11 @@ router.get("/report/RevenueByProducts", isAdmin,(req, res) => {
     res.render("admin/Report/RevenueByProducts", content);
   });
 });
-//////////////////////////////////////////////////////
 
 // Revenue and orders by Customers  //////////////////////////////////
-router.get("/report/ReOrByUsers", isAdmin,(req, res) => {
+router.get("/report/ReOrByUsers", isAdmin, (req, res) => {
   var mysql =
-    "SELECT U.UserID, U.FullName, SUM(O.Total) AS Total_revenue, COUNT(O.UserID) AS Total_orders\
+    "SELECT U.Avatar, U.UserID, U.FullName, SUM(O.Total) AS Total_revenue, COUNT(O.UserID) AS Total_orders\
                 FROM Users U, Orders O\
                 WHERE O.UserID = U.UserID\
                 GROUP BY U.UserID, U.FullName";
@@ -294,10 +309,9 @@ router.get("/report/ReOrByUsers", isAdmin,(req, res) => {
     res.render("admin/Report/ReOrByUsers", content);
   });
 });
-//////////////////////////////////////////////////////
 
 // Revenue and Orders By Regions//////////////////////////////////
-router.get("/report/ReOrByRegions", isAdmin,(req, res) => {
+router.get("/report/ReOrByRegions", isAdmin, (req, res) => {
   var mysql =
     "SELECT U.City, SUM(U.UserID) AS Total_users, SUM(O.Total) AS Total_revenue, COUNT(O.UserID) AS Total_orders\
                 FROM Users U, Orders O\
@@ -312,12 +326,11 @@ router.get("/report/ReOrByRegions", isAdmin,(req, res) => {
     res.render("admin/Report/ReOrByRegions", content);
   });
 });
-//////////////////////////////////////////////////////
 
 // Revenue and Orders By Categories//////////////////////////////////
-router.get("/report/ReOrByCats", isAdmin,(req, res) => {
+router.get("/report/ReOrByCats", isAdmin, (req, res) => {
   var mysql =
-    "SELECT C.CategoryName, COUNT(P.ProductName) AS Total_products, SUM(O.Quantity) AS Total_orders, SUM(O.Total) AS Total_revenue\
+    "SELECT C.CategoryID, C.CategoryName, COUNT(P.ProductName) AS Total_products, SUM(O.Quantity) AS Total_orders, SUM(O.Total) AS Total_revenue\
                 FROM Categories C,  `Order Details` O right join Products P on P.ProductID = O.ProductID\
                 WHERE C.CategoryID = P.CategoryID\
                 GROUP BY C.CategoryID";
@@ -330,29 +343,26 @@ router.get("/report/ReOrByCats", isAdmin,(req, res) => {
     res.render("admin/Report/ReOrByCats", content);
   });
 });
-//////////////////////////////////////////////////////
-
 // Revenue and Orders By Categories//////////////////////////////////
-router.get("/report/ReProductsByCate", isAdmin,(req, res) => {
+
+router.get("/report/ReProductByCate", isAdmin, (req, res) => {
   var mysql =
     "SELECT B.CategoryID, C.CategoryName, SUM(B.UnitsInStock) AS TotalUnits, COUNT(B.ProductID) AS TotalProducts\
-              FROM Products B\
-              INNER JOIN Categories C on B.CategoryID = C.CategoryID\
-              GROUP BY CategoryID\
-              ORDER BY CategoryID ASC";
-  RunQuery(mysql, function (UserInfor) {
+    FROM Products B\
+    INNER JOIN Categories C on B.CategoryID = C.CategoryID\
+    GROUP BY CategoryID\
+    ORDER BY CategoryID ASC";
+  RunQuery(mysql, function (product) {
     var content = {
       title: "user",
-      usr: UserInfor,
+      productCategory: product,
       customer: req.user,
     };
-    res.render("admin/Report/ReProductsByCate", content);
+    res.render("admin/Report/ReProductByCate", content);
   });
 });
-//////////////////////////////////////////////////////
 
-// Revenue and Orders By Categories//////////////////////////////////
-router.get("/report/ReTop10Order", isAdmin,(req, res) => {
+router.get("/report/ReTop10Order", isAdmin, (req, res) => {
   var mysql =
     "SELECT OrderID, U.FullName, Total, DATE_FORMAT(OrderDate,'%d %M %Y') AS Date\
               FROM Orders\

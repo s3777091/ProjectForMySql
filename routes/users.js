@@ -1,9 +1,8 @@
+//this is checking user login adnd register
 module.exports = function (app, passport) {
     app.get("/sign-in", function (req, res) {
-      // render the page and pass in any flash data if it exists
       if (req.session.inCheckOut) {
-        var checkOutNoti =
-          "You Need sign in If you don't have acount Please sign up";
+        var checkOutNoti = "If don't have account pls create one";
         req.session.inCheckOut = false;
       }
       var contextDict = {
@@ -13,7 +12,6 @@ module.exports = function (app, passport) {
       };
       res.render("shop/userlogin/login", contextDict);
     });
-  
     app.post(
       "/sign-in",
       passport.authenticate("sign-in", {

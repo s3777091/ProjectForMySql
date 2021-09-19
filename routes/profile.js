@@ -8,13 +8,13 @@ var database = require("../config/database");
 var RunQuery = database.RunQuery;
 
 function isLoggedIn(req, res, next) {
-  // if user is authenticated in the session, carry on
   if (req.isAuthenticated()) {
     return next();
   } else {
     res.redirect("/");
   }
 }
+//function checking login admin or user
 
 router.route("/").get(function (req, res) {
   if (req.isAuthenticated()) {
@@ -83,21 +83,13 @@ router
       customer: req.user,
     });
   })
-
   .post(isLoggedIn, function (req, res) {
     var form = req.body;
     if (form.newPassword == form.repeatPassword) {
       if (bcrypt.compareSync(form.currentPassword, req.user.Password)) {
         var passwordHash = bcrypt.hashSync(form.newPassword, null, null);
         var updateQuery =
-          "\
-                UPDATE Users\
-                SET Password = '" +
-          passwordHash +
-          "' \
-                WHERE UserID = " +
-          req.user.UserID;
-
+          `UPDATE Users SET Password = '${passwordHash}' WHERE UserID = '${req.user.UserID}'`;
         RunQuery(updateQuery, function (result) {
           res.redirect("/usr/" + req.user.Username);
         });

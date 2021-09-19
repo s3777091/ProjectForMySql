@@ -20,16 +20,13 @@ router.route("/").get(function (req, res) {
   }
 });
 
-router.route("/delivery").get(function (req, res, next) {
+router.route("/delivery").get(function (req, res) {
   req.session.address = {};
   // show DeliveryAdressessvs
   var selectQuery =
-    "\
-            SELECT *\
-            FROM DeliveryAdresses\
-            WHERE UserID = " +
-    req.user.UserID +
-    ";";
+    `SELECT *\
+    FROM DeliveryAdresses\
+     WHERE UserID = '${req.user.UserID}'`;
   RunQuery(selectQuery, function (ad) {
     req.session.address = ad;
     var content = {
@@ -41,7 +38,7 @@ router.route("/delivery").get(function (req, res, next) {
   });
 });
 
-router.route("/delivery/new").post(function (req, res, next) {
+router.route("/delivery/new").post(function (req, res) {
   var fullName = req.body.fullName;
   var email = req.body.email;
   var address = req.body.streetAddress;
@@ -49,7 +46,7 @@ router.route("/delivery/new").post(function (req, res, next) {
   var country = req.body.country;
   var phone = req.body.phone;
 
-  // add address
+  // add address information for user
   var Query =
     "INSERT INTO DeliveryAdresses VALUES(null, " +
     req.user.UserID +
@@ -80,12 +77,7 @@ router.route("/delivery/new").post(function (req, res, next) {
 
 router.route("/delivery/:id").post(function (req, res) {
   var selectQuery =
-    "\ SELECT *\
-            FROM DeliveryAdresses\
-            WHERE AddressID = " +
-    req.params.id +
-    ";";
-
+    `SELECT * FROM DeliveryAdresses WHERE AddressID = '${req.params.id}'`;
   RunQuery(selectQuery, function (rows) {
     req.session.address = rows[0];
     res.redirect("/checkout/review");
@@ -121,9 +113,8 @@ router.route("/order").get(function (req, res) {
     for (var item in req.session.cart) {
       if (req.session.cart[item].quantity > 0) {
         insertQuery =
-          "\
-                        INSERT INTO `Order Details`\
-                        VALUES(" +
+          "INSERT INTO `Order Details`\
+           VALUES(" +
           rows.insertId +
           ", " +
           req.session.cart[item].ProductID +
@@ -132,32 +123,20 @@ router.route("/order").get(function (req, res) {
           ", " +
           req.session.cart[item].productTotal +
           ");";
-
         updateQuery =
-          "UPDATE Products SET UnitsInStock = (UnitsInStock - " +
-          req.session.cart[item].quantity +
-          ") WHERE ProductID = " +
-          req.session.cart[item].ProductID;
+          `UPDATE Products SET UnitsInStock = (UnitsInStock - '${req.session.cart[item].quantity}' + '${req.session.cart[item].quantity}') WHERE ProductID = '${req.session.cart[item].ProductID}'`
         RunQuery(insertQuery, function (r) {
           RunQuery(updateQuery, function (r2) {});
         });
       }
     }
     var selectQuery =
-      "\
-            SELECT *\
-            FROM Orders\
-            WHERE OrderID = " +
-      rows.insertId;
+      `SELECT * FROM Orders WHERE OrderID = '${rows.insertId}'`;
+    console.log(rows.insertId);
     RunQuery(selectQuery, function (order) {
       //i take the delivery infor
       selectQuery =
-        "\
-                SELECT *\
-                FROM DeliveryAdresses\
-                WHERE AddressID = " +
-        order[0].AddressID;
-
+        `SELECT * FROM DeliveryAdresses WHERE AddressID = '${order[0].AddressID}'`
       RunQuery(selectQuery, function (address) {
         //i take the order infor 
         selectQuery =
