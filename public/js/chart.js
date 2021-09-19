@@ -63,7 +63,7 @@ async function getData() {
   for (let item in data) {
     //vòng lặp
     var UserFullName = data[item].Username;
-    var quantity = data[item].Quality;
+    var quantity = data[item].Quantity;
     var money = data[item].TOTALMONEY;
     // bỏ data vào với biến productName và số lương sản phẩm
     xUserName.push(UserFullName);

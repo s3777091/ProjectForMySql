@@ -4,7 +4,6 @@
     <thead>
         <tr>
             <th>City</th>
-            <th>Total users</th>
             <th>Total revenue</th>
             <th>Total orders</th>
         </tr>
@@ -12,8 +11,7 @@
     <tbody>
         <% usr.forEach(function(ur){ %>
         <tr class="active-row">
-            <td><%= ur.City %></td>
-            <td><%= ur.Toal_users %></td>
+            <td><%= ur.DeliveryCity %></td>
             <td><%= ur.Total_revenue %></td>
             <td><%= ur.Total_orders %></td>
         </tr>
