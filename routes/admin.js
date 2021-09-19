@@ -99,7 +99,7 @@ router.get("/delete/:ProductSlug", isAdmin, (req, res) => {
 
 router.get("/api/topuser", isAdmin, (req, res) => {
   let sqlStr =
-    "SELECT DISTINCT U.Username,COUNT(*) AS Quality, SUM(O.SubTotal) AS TOTALMONEY FROM Users U, Orders O, `Order Details` OD WHERE U.UserID = O.UserID AND OD.OrderID = O.OrderID GROUP BY U.UserID HAVING COUNT(*) >= 2";
+    "SELECT DISTINCT U.Username,COUNT(*) AS Quantity, SUM(O.SubTotal) AS TOTALMONEY FROM Users U, Orders O, `Order Details` OD WHERE U.UserID = O.UserID AND OD.OrderID = O.OrderID GROUP BY U.UserID";
   RunQuery(sqlStr, function (user) {
     res.json(user);
   });
@@ -124,7 +124,10 @@ router.get("/api/sales/chartinday", isAdmin, (req, res) => {
 
 router.get("/api/order1000", isAdmin, (req, res) => {
   let sqlStr =
-    "SELECT * FROM Products P, Orders O, `Order Details` OD WHERE P.ProductID = OD.ProductID AND O.OrderID = OD.OrderID HAVING O.SubTotal >= 1000";
+    "SELECT P.Image, P.ProductName, SUM(O.Quantity) AS Quantity\
+      FROM Products P, `Order Details` O\
+      WHERE P.ProductID = O.ProductID\
+      GROUP BY P.ProductID";
   RunQuery(sqlStr, function (or) {
     res.json(or);
   });
@@ -204,7 +207,8 @@ router.get("/UnitInStock", isAdmin, (req, res) => {
 
 
 router.get("/api/UnitInStock", isAdmin, (req, res) => {
-  let sqlStr = "SELECT * FROM Products";
+  let sqlStr = "SELECT P.ProductName, P.UnitsInStock\
+                FROM Products P";
   RunQuery(sqlStr, function (Unit) {
     res.json(Unit);
   });
@@ -313,10 +317,10 @@ router.get("/report/ReOrByUsers", isAdmin, (req, res) => {
 // Revenue and Orders By Regions//////////////////////////////////
 router.get("/report/ReOrByRegions", isAdmin, (req, res) => {
   var mysql =
-    "SELECT U.City, SUM(U.UserID) AS Total_users, SUM(O.Total) AS Total_revenue, COUNT(O.UserID) AS Total_orders\
-                FROM Users U, Orders O\
-                WHERE O.UserID = U.UserID\
-                GROUP BY U.City";
+    "SELECT D.DeliveryCity, SUM(O.SubTotal) AS Total_revenue, COUNT(O.OrderID) AS Total_orders\
+    FROM DeliveryAdresses D, Orders O\
+    WHERE D.AddressID = O.AddressID\
+    GROUP BY O.AddressID";
   RunQuery(mysql, function (UserInfor) {
     var content = {
       title: "user",
