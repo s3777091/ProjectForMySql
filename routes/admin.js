@@ -33,22 +33,19 @@ router.get("/add_product", isAdmin, (req, res) => {
 });
 
 router.post("/save_product", isAdmin, (req, res) => {
-  let data = {
-    ProductName: req.body.ProductName,
-    CategoryID: req.body.CategoryID,
-    ProductPrice: req.body.ProductPrice,
-    UnitsInStock: req.body.UnitsInStock,
-    Description: req.body.Description,
-    ManufactureYear: req.body.ManufactureYear,
-    Image: req.body.Image,
-    ProductSlug: req.body.ProductSlug,
-    Feature: req.body.Feature,
-    Banner_event: req.body.Banner_event,
-  };
-
-  let sql = "INSERT INTO Products SET ?";
-  RunQuery(sql, data, (err, results) => {
-    if (err) throw err;
+  let sql= `INSERT INTO Products SET 
+  ProductName = '${req.body.ProductName}',
+  CategoryID = '${req.body.CategoryID}',
+  ProductPrice = '${ req.body.ProductPrice}',
+  UnitsInStock = '${req.body.UnitsInStock}',
+  Description = '${req.body.Description}',
+  ManufactureYear = '${ req.body.ManufactureYear}',
+  Image = '${req.body.Image}',
+  ProductSlug = '${req.body.ProductSlug}',
+  Feature = '${req.body.Feature}',
+  Banner_event = '${req.body.Banner_event}'`  
+  
+  RunQuery(sql, function () {
     res.redirect("/");
   });
 });
@@ -81,9 +78,8 @@ router.post("/update", isAdmin, (req, res) => {
     "', ManufactureYear='" +
     req.body.ManufactureYear +
     "' WHERE ProductSlug =" +
-    "${ProductSlug}";
+    `'${ProductSlug}'`;
   RunQuery(sql, function () {
-    if (err) throw err;
     res.redirect("/");
   });
 });
@@ -91,8 +87,7 @@ router.post("/update", isAdmin, (req, res) => {
 router.get("/delete/:ProductSlug", isAdmin, (req, res) => {
   const ProductSlug = req.params.ProductSlug;
   let sql = `DELETE from Products WHERE ProductSlug = '${ProductSlug}'`;
-  RunQuery(sql, (err, result) => {
-    if (err) throw err;
+  RunQuery(sql, (result) => {
     res.redirect("/");
   });
 });
