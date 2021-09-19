@@ -20,6 +20,7 @@
 <div class="card_body">
   <% products.forEach(function(pr){ %>
   <div class="card">
+    <a href="/cat/<%= pr.CategorySlug%>/<%=pr.ProductSlug %>">
     <div class="imgBox">
       <img src="<%= pr.Image %>" alt="" />
     </div>
@@ -50,5 +51,5 @@
     </div>
   </div>
   <% }); %>
+
 </div>
-  

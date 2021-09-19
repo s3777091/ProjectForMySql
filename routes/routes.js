@@ -102,7 +102,7 @@ router.route("/cat/:catSlug").all(isLoggedIn,function (req, res, next) {
   }
 });
 
-//category page 
+//product detail show page
 router.route("/cat/:catSlug/:prodSlug").all(isLoggedIn,function (req, res, next) {
   var sqlStr =
     `SELECT * FROM Products WHERE ProductSlug = '${req.params.prodSlug}'`

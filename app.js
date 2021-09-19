@@ -1,6 +1,7 @@
 var express = require('express');
 const expressLayouts = require("express-ejs-layouts");
 var path = require('path');
+const compression = require('compression');
 
 var favicon = require('serve-favicon');
 var morgan = require('morgan');
@@ -50,6 +51,16 @@ app.use(passport.initialize());
 app.use(passport.session());
     // this one use to connect with flash
 app.use(flash());
+
+app.use(compression({
+    level: 1,
+    filter: (req, res) => {
+        if (req.header['x-no-compression']) {
+            return false
+        }
+        return compression.filter(req, res)
+    },
+}))
 
 
 //import router file from router dictory
