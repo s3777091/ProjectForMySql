@@ -41,7 +41,7 @@ async function getData() {
   // tạo biến private
   // mở crt + F11 mở cửa sổ console sẽ thấy
   // gọi giá trị stock là cái nhập vào đẻ filter nhưng ko hiểu sao ko vào
-  const response = await fetch("https://tradesql.herokuapp.com/admin/api/manuyear");
+  const response = await fetch("http://localhost:9999/admin/api/manuyear");
 
   // sử dụng api từ web
   const data = await response.json();
